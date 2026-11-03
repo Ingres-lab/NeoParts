@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <string name="app_name">Neo</string>
+    <string name="neo_title">Neo</string>
+    <string name="neo_summary">Charging, SELinux</string>
+
+    <string name="bypass_charging_title">Bypass charging</string>
+    <string name="bypass_charging_summary">Run the phone from the charger and stop charging the battery. The firmware only holds the battery at 80% or above.</string>
+
+    <string name="selinux_title">SELinux enforcing</string>
+    <string name="selinux_summary_enforcing">Enforcing. Changes apply at once and persist across reboots.</string>
+    <string name="selinux_summary_permissive">Permissive. Changes apply at once and persist across reboots.</string>
+    <string name="selinux_dialog_title">Switch to Permissive?</string>
+    <string name="selinux_dialog_message">Permissive mode disables Android\'s security policy. Apps and services are no longer confined, so a compromised app can access data and hardware it normally cannot. This setting stays on across reboots until you turn enforcing back on.</string>
+    <string name="selinux_dialog_confirm">Switch to Permissive</string>
+</resources>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:title="@string/lights_title">
+
+    <ListPreference
+        android:key="lights_effect"
+        android:persistent="false"
+        android:title="@string/lights_effect_title"
+        android:entries="@array/lights_effect_entries"
+        android:entryValues="@array/lights_effect_values"
+        app:useSimpleSummaryProvider="true" />
+
+    <SwitchPreferenceCompat
+        android:key="lights_custom_color"
+        android:persistent="false"
+        android:title="@string/lights_custom_title"
+        android:summary="@string/lights_custom_summary" />
+
+    <ListPreference
+        android:key="lights_color"
+        android:persistent="false"
+        android:title="@string/lights_color_title"
+        android:entries="@array/lights_color_entries"
+        android:entryValues="@array/lights_color_values"
+        app:useSimpleSummaryProvider="true" />
+
+    <SeekBarPreference
+        android:key="lights_speed"
+        android:persistent="false"
+        android:title="@string/lights_speed_title"
+        android:min="300"
+        android:max="4000"
+        app:seekBarIncrement="100"
+        app:updatesContinuously="false" />
+
+    <SeekBarPreference
+        android:key="lights_brightness"
+        android:persistent="false"
+        android:title="@string/lights_brightness_title"
+        android:min="0"
+        android:max="7"
+        app:showSeekBarValue="true"
+        app:updatesContinuously="false" />
+
+    <SwitchPreferenceCompat
+        android:key="lights_bootglow"
+        android:persistent="false"
+        android:title="@string/lights_bootglow_title"
+        android:summary="@string/lights_bootglow_summary" />
+
+    <PreferenceCategory
+        android:key="lights_events"
+        android:title="@string/lights_events_title"
+        android:summary="@string/lights_events_summary" />
+
+    <PreferenceCategory
+        android:key="lights_call_category"
+        android:title="@string/lights_event_call">
+
+        <SwitchPreferenceCompat
+            android:key="lights_call_enable"
+            android:persistent="false"
+            android:title="@string/lights_event_enable" />
+
+        <ListPreference
+            android:key="lights_call_effect"
+            android:persistent="false"
+            android:title="@string/lights_event_effect"
+            android:entries="@array/lights_event_effect_entries"
+            android:entryValues="@array/lights_event_effect_values"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            android:key="lights_call_color"
+            android:persistent="false"
+            android:title="@string/lights_event_color"
+            android:entries="@array/lights_event_color_entries"
+            android:entryValues="@array/lights_event_color_values"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="lights_notif_category"
+        android:title="@string/lights_event_notif">
+
+        <SwitchPreferenceCompat
+            android:key="lights_notif_enable"
+            android:persistent="false"
+            android:title="@string/lights_event_enable" />
+
+        <ListPreference
+            android:key="lights_notif_effect"
+            android:persistent="false"
+            android:title="@string/lights_event_effect"
+            android:entries="@array/lights_event_effect_entries"
+            android:entryValues="@array/lights_event_effect_values"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            android:key="lights_notif_color"
+            android:persistent="false"
+            android:title="@string/lights_event_color"
+            android:entries="@array/lights_event_color_entries"
+            android:entryValues="@array/lights_event_color_values"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="lights_low_category"
+        android:title="@string/lights_event_low">
+
+        <SwitchPreferenceCompat
+            android:key="lights_low_enable"
+            android:persistent="false"
+            android:title="@string/lights_event_enable" />
+
+        <ListPreference
+            android:key="lights_low_effect"
+            android:persistent="false"
+            android:title="@string/lights_event_effect"
+            android:entries="@array/lights_event_effect_entries"
+            android:entryValues="@array/lights_event_effect_values"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            android:key="lights_low_color"
+            android:persistent="false"
+            android:title="@string/lights_event_color"
+            android:entries="@array/lights_event_color_entries"
+            android:entryValues="@array/lights_event_color_values"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="lights_charge_category"
+        android:title="@string/lights_event_charge">
+
+        <SwitchPreferenceCompat
+            android:key="lights_charge_enable"
+            android:persistent="false"
+            android:title="@string/lights_event_enable" />
+
+        <ListPreference
+            android:key="lights_charge_effect"
+            android:persistent="false"
+            android:title="@string/lights_event_effect"
+            android:entries="@array/lights_event_effect_entries"
+            android:entryValues="@array/lights_event_effect_values"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            android:key="lights_charge_color"
+            android:persistent="false"
+            android:title="@string/lights_event_color"
+            android:entries="@array/lights_event_color_entries"
+            android:entryValues="@array/lights_event_color_values"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

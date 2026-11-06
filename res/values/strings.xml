@@ -6,15 +6,114 @@
 <resources>
     <string name="app_name">Neo</string>
     <string name="neo_title">Neo</string>
-    <string name="neo_summary">Charging, SELinux</string>
+    <string name="neo_summary">Triggers, rear lights, charging, graphics, SELinux</string>
 
+    <string name="category_charging">Charging</string>
+    <string name="category_gaming">Gaming</string>
+    <string name="category_graphics">Graphics</string>
+    <string name="category_security">Security</string>
+
+    <!-- Bypass charging -->
     <string name="bypass_charging_title">Bypass charging</string>
     <string name="bypass_charging_summary">Run the phone from the charger and stop charging the battery. The firmware only holds the battery at 80% or above.</string>
 
+    <!-- Live battery monitor. Current is shown as flow into the battery. -->
+    <string name="battery_monitor_title">Battery current</string>
+    <string name="battery_monitor_unavailable">Battery current is not available</string>
+    <string name="battery_flow_charging">Charging: %1$d mA into the battery · %2$s W</string>
+    <string name="battery_flow_discharging">Discharging: %1$d mA out of the battery · %2$s W</string>
+    <string name="battery_flow_idle">Idle: %1$d mA</string>
+    <string name="battery_details">%1$s V · %2$d%% · %3$s</string>
+    <string name="battery_plugged">charger connected</string>
+    <string name="battery_unplugged">on battery</string>
+    <string name="bypass_state_unplugged">Bypass is on. Connect a charger to run the phone from it.</string>
+    <string name="bypass_state_working">Bypass is working: the phone runs from the charger and the battery is idle.</string>
+    <string name="bypass_state_filling">Charging to 80% first; bypass then holds the battery.</string>
+    <string name="bypass_state_not_holding">Bypass is on but the battery is still charging above 80%. Bypass is not taking effect.</string>
+    <string name="bypass_state_draining">The phone draws more than the charger supplies; the battery covers the difference.</string>
+
+    <!-- GPU driver -->
+    <string name="gpu_turnip_title">Mesa Turnip Vulkan driver</string>
+    <string name="gpu_active_turnip">Active: Mesa Turnip</string>
+    <string name="gpu_active_adreno">Active: Qualcomm (stock)</string>
+    <string name="gpu_pending_turnip">Mesa Turnip after restart</string>
+    <string name="gpu_pending_adreno">Qualcomm driver after restart</string>
+    <string name="gpu_missing">The Turnip driver is not installed in this build</string>
+    <string name="gpu_summary_format">%1$s. %2$s.</string>
+    <string name="gpu_dialog_title">Switch to Mesa Turnip?</string>
+    <string name="gpu_dialog_message">Turnip replaces the Vulkan driver for the whole system, including the UI renderer, not only for games. If the screen does not draw after the restart, switch back over adb:\n\nadb shell setprop persist.sys.neo.gpu adreno\nadb reboot</string>
+    <string name="gpu_dialog_confirm">Switch</string>
+    <string name="restart_title">Restart to apply</string>
+    <string name="restart_message">The graphics driver changes on the next restart.</string>
+    <string name="restart_now">Restart now</string>
+    <string name="restart_later">Later</string>
+
+    <!-- SELinux -->
     <string name="selinux_title">SELinux enforcing</string>
     <string name="selinux_summary_enforcing">Enforcing. Changes apply at once and persist across reboots.</string>
     <string name="selinux_summary_permissive">Permissive. Changes apply at once and persist across reboots.</string>
     <string name="selinux_dialog_title">Switch to Permissive?</string>
     <string name="selinux_dialog_message">Permissive mode disables Android\'s security policy. Apps and services are no longer confined, so a compromised app can access data and hardware it normally cannot. This setting stays on across reboots until you turn enforcing back on.</string>
     <string name="selinux_dialog_confirm">Switch to Permissive</string>
+    <!-- Shoulder triggers -->
+    <string name="trigger_title">Shoulder triggers</string>
+    <string name="trigger_summary">Map the pop-up triggers to touches on the screen</string>
+    <string name="trigger_enable_title">Trigger touch mapping</string>
+    <string name="trigger_enable_summary">While a trigger is popped up, pressing it touches its point on the screen. Holding the trigger holds the touch.</string>
+    <string name="trigger_edit_title">Set touch points</string>
+    <string name="trigger_edit_summary">Drag L and R onto the screen. To place them over a game, add the Trigger points tile to Quick Settings and open it in the game.</string>
+    <string name="trigger_points_category">Touch points</string>
+    <string name="trigger_left_title">Left trigger</string>
+    <string name="trigger_right_title">Right trigger</string>
+    <string name="trigger_point_unset">Not set</string>
+    <string name="trigger_point_format">%1$s%% from the left, %2$s%% from the top (portrait)</string>
+    <string name="trigger_clear_title">Clear both points</string>
+    <string name="trigger_footer">Points stay on the same spot of the screen in every rotation. Retracting a trigger lifts its touch.</string>
+    <string name="trigger_editor_hint">Drag L and R onto the buttons the triggers should press, then Save.</string>
+    <string name="trigger_editor_save">Save</string>
+    <string name="trigger_editor_clear_left">Clear L</string>
+    <string name="trigger_editor_clear_right">Clear R</string>
+    <string name="trigger_tile_label">Trigger points</string>
+    <string name="trigger_tile_on">Mapping on</string>
+    <string name="trigger_tile_off">Mapping off</string>
+
+    <!-- Rear lights -->
+    <string name="lights_title">Rear lights</string>
+    <string name="lights_summary">Effect, colour and brightness of the lights around the cameras</string>
+    <string name="lights_effect_title">Effect</string>
+    <string name="lights_effect_off">Off</string>
+    <string name="lights_effect_steady">Steady</string>
+    <string name="lights_effect_breath">Breathing</string>
+    <string name="lights_effect_collision">Collision</string>
+    <string name="lights_effect_skyline">Skyline</string>
+    <string name="lights_effect_flower">Flower</string>
+    <string name="lights_effect_game">Game</string>
+    <string name="lights_custom_title">Custom colour</string>
+    <string name="lights_custom_summary">Off plays the effect in its stock colours</string>
+    <string name="lights_color_title">Colour</string>
+    <string name="lights_color_neo_blue">Neo blue</string>
+    <string name="lights_color_cyan">Cyan</string>
+    <string name="lights_color_purple">Purple</string>
+    <string name="lights_color_magenta">Magenta</string>
+    <string name="lights_color_red">Red</string>
+    <string name="lights_color_orange">Orange</string>
+    <string name="lights_color_yellow">Yellow</string>
+    <string name="lights_color_green">Green</string>
+    <string name="lights_color_white">White</string>
+    <string name="lights_speed_title">Speed</string>
+    <string name="lights_speed_summary">%1$d ms per cycle (custom colour only)</string>
+    <string name="lights_brightness_title">Brightness</string>
+    <string name="lights_bootglow_title">Glow while booting</string>
+    <string name="lights_bootglow_summary">Breathe in Neo blue until Android has started</string>
+    <string name="lights_events_title">Events</string>
+    <string name="lights_events_summary">Priority: calls, then notifications, then low battery, then charging. Anything else shows the effect above.</string>
+    <string name="lights_event_call">Calls</string>
+    <string name="lights_event_notif">Notifications</string>
+    <string name="lights_event_low">Low battery</string>
+    <string name="lights_event_charge">Charging</string>
+    <string name="lights_event_enable">Show light</string>
+    <string name="lights_event_effect">Effect</string>
+    <string name="lights_event_color">Colour</string>
+    <string name="lights_effect_default">Default</string>
+    <string name="lights_color_stock">Stock colours</string>
 </resources>

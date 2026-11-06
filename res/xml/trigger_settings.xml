@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/trigger_title">
+
+    <SwitchPreferenceCompat
+        android:key="trigger_enable"
+        android:persistent="false"
+        android:title="@string/trigger_enable_title"
+        android:summary="@string/trigger_enable_summary" />
+
+    <Preference
+        android:key="trigger_edit"
+        android:persistent="false"
+        android:title="@string/trigger_edit_title"
+        android:summary="@string/trigger_edit_summary" />
+
+    <PreferenceCategory
+        android:key="trigger_points"
+        android:title="@string/trigger_points_category">
+
+        <Preference
+            android:key="trigger_left"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/trigger_left_title" />
+
+        <Preference
+            android:key="trigger_right"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/trigger_right_title" />
+
+        <Preference
+            android:key="trigger_clear"
+            android:persistent="false"
+            android:title="@string/trigger_clear_title" />
+
+    </PreferenceCategory>
+
+    <Preference
+        android:key="trigger_footer"
+        android:persistent="false"
+        android:selectable="false"
+        android:summary="@string/trigger_footer" />
+
+</PreferenceScreen>

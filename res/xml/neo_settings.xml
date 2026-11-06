@@ -6,15 +6,68 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/neo_title">
 
-    <SwitchPreferenceCompat
-        android:key="bypass_charging"
-        android:persistent="false"
-        android:title="@string/bypass_charging_title"
-        android:summary="@string/bypass_charging_summary" />
+    <PreferenceCategory
+        android:key="category_charging"
+        android:title="@string/category_charging">
 
-    <SwitchPreferenceCompat
-        android:key="selinux_enforcing"
-        android:persistent="false"
-        android:title="@string/selinux_title" />
+        <SwitchPreferenceCompat
+            android:key="bypass_charging"
+            android:persistent="false"
+            android:title="@string/bypass_charging_title"
+            android:summary="@string/bypass_charging_summary" />
+
+        <Preference
+            android:key="battery_monitor"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/battery_monitor_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_gaming"
+        android:title="@string/category_gaming">
+
+        <Preference
+            android:key="shoulder_triggers"
+            android:title="@string/trigger_title"
+            android:summary="@string/trigger_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.TriggerSettingsActivity" />
+        </Preference>
+
+        <Preference
+            android:key="rear_lights"
+            android:title="@string/lights_title"
+            android:summary="@string/lights_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.LightsSettingsActivity" />
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_graphics"
+        android:title="@string/category_graphics">
+
+        <SwitchPreferenceCompat
+            android:key="gpu_turnip"
+            android:persistent="false"
+            android:title="@string/gpu_turnip_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_security"
+        android:title="@string/category_security">
+
+        <SwitchPreferenceCompat
+            android:key="selinux_enforcing"
+            android:persistent="false"
+            android:title="@string/selinux_title" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

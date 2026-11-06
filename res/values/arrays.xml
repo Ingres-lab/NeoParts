@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Index into aw22xxx_cfg_name[] in the kernel driver -->
+    <string-array name="lights_effect_entries">
+        <item>@string/lights_effect_off</item>
+        <item>@string/lights_effect_steady</item>
+        <item>@string/lights_effect_breath</item>
+        <item>@string/lights_effect_collision</item>
+        <item>@string/lights_effect_skyline</item>
+        <item>@string/lights_effect_flower</item>
+        <item>@string/lights_effect_game</item>
+    </string-array>
+    <string-array name="lights_effect_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>18</item>
+    </string-array>
+
+    <string-array name="lights_color_entries">
+        <item>@string/lights_color_neo_blue</item>
+        <item>@string/lights_color_cyan</item>
+        <item>@string/lights_color_purple</item>
+        <item>@string/lights_color_magenta</item>
+        <item>@string/lights_color_red</item>
+        <item>@string/lights_color_orange</item>
+        <item>@string/lights_color_yellow</item>
+        <item>@string/lights_color_green</item>
+        <item>@string/lights_color_white</item>
+    </string-array>
+    <!-- RRGGBB -->
+    <string-array name="lights_color_values" translatable="false">
+        <item>00B4FF</item>
+        <item>00FFE0</item>
+        <item>A020F0</item>
+        <item>FF00C8</item>
+        <item>FF0000</item>
+        <item>FF6000</item>
+        <item>FFD000</item>
+        <item>00FF40</item>
+        <item>FFFFFF</item>
+    </string-array>
+
+    <!-- Per event: "default" = what Android asks for (breathing if it blinks, steady otherwise) -->
+    <string-array name="lights_event_effect_entries">
+        <item>@string/lights_effect_default</item>
+        <item>@string/lights_effect_off</item>
+        <item>@string/lights_effect_steady</item>
+        <item>@string/lights_effect_breath</item>
+        <item>@string/lights_effect_collision</item>
+        <item>@string/lights_effect_skyline</item>
+        <item>@string/lights_effect_flower</item>
+        <item>@string/lights_effect_game</item>
+    </string-array>
+    <string-array name="lights_event_effect_values" translatable="false">
+        <item>default</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>18</item>
+    </string-array>
+    <string-array name="lights_event_color_entries">
+        <item>@string/lights_effect_default</item>
+        <item>@string/lights_color_stock</item>
+        <item>@string/lights_color_neo_blue</item>
+        <item>@string/lights_color_cyan</item>
+        <item>@string/lights_color_purple</item>
+        <item>@string/lights_color_magenta</item>
+        <item>@string/lights_color_red</item>
+        <item>@string/lights_color_orange</item>
+        <item>@string/lights_color_yellow</item>
+        <item>@string/lights_color_green</item>
+        <item>@string/lights_color_white</item>
+    </string-array>
+    <string-array name="lights_event_color_values" translatable="false">
+        <item>default</item>
+        <item>stock</item>
+        <item>00B4FF</item>
+        <item>00FFE0</item>
+        <item>A020F0</item>
+        <item>FF00C8</item>
+        <item>FF0000</item>
+        <item>FF6000</item>
+        <item>FFD000</item>
+        <item>00FF40</item>
+        <item>FFFFFF</item>
+    </string-array>
+</resources>

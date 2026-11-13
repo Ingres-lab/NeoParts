@@ -62,7 +62,10 @@
     <string name="trigger_enable_title">Trigger touch mapping</string>
     <string name="trigger_enable_summary">While a trigger is popped up, pressing it touches its point on the screen. Holding the trigger holds the touch.</string>
     <string name="trigger_edit_title">Set touch points</string>
-    <string name="trigger_edit_summary">Drag L and R onto the screen. To place them over a game, add the Trigger points tile to Quick Settings and open it in the game.</string>
+    <string name="trigger_edit_summary">Drag L and R onto the screen. In a game, tap the floating trigger button or the Trigger points tile to place them right over the game.</string>
+    <string name="trigger_bubble_title">Floating button</string>
+    <string name="trigger_bubble_summary">A small trigger button floats over apps while mapping is on. Tap it in a game to place L and R over the game; drag to move it, long-press to hide it.</string>
+    <string name="trigger_bubble_hidden">Trigger button hidden. Use the Trigger points tile, or switch mapping off and on, to show it again.</string>
     <string name="trigger_points_category">Touch points</string>
     <string name="trigger_left_title">Left trigger</string>
     <string name="trigger_right_title">Right trigger</string>

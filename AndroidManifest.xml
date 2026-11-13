@@ -22,6 +22,11 @@
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <!-- Shoulder trigger overlay: floating button and editor over games (signature
+         permission, granted to the platform-signed app); the editor collapses the shade -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+
     <!-- Tools > Hide developer options restarts an app after its setting changes -->
     <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
 
@@ -123,14 +128,9 @@
             android:exported="false"
             android:theme="@style/Theme.SubSettingsBase" />
 
-        <activity
-            android:name=".TriggerEditorActivity"
-            android:label="@string/trigger_tile_label"
-            android:exported="false"
-            android:excludeFromRecents="true"
-            android:taskAffinity="org.neo.parts.triggereditor"
-            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
-            android:theme="@style/Theme.TriggerEditor" />
+        <service
+            android:name=".TriggerOverlayService"
+            android:exported="false" />
 
         <service
             android:name=".TriggerTileService"

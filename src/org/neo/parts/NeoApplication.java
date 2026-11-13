@@ -29,6 +29,7 @@ public class NeoApplication extends Application {
         super.onCreate();
         register();
         AodController.init(this);
+        TriggerOverlayService.update(this);
     }
 
     private void register() {

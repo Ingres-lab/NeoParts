@@ -5,12 +5,10 @@
 
 package org.neo.parts;
 
-import android.app.PendingIntent;
-import android.content.Intent;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 
-/** Quick Settings tile: opens the trigger point editor over the current app. */
+/** Quick Settings tile: opens the trigger point overlay editor over the current app. */
 public class TriggerTileService extends TileService {
 
     @Override
@@ -27,9 +25,7 @@ public class TriggerTileService extends TileService {
 
     @Override
     public void onClick() {
-        final Intent intent = new Intent(this, TriggerEditorActivity.class)
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivityAndCollapse(PendingIntent.getActivity(this, 0, intent,
-                PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT));
+        // Overlay editor on top of the current app; it collapses the shade itself
+        TriggerOverlayService.edit(this);
     }
 }

@@ -18,6 +18,13 @@
         android:title="@string/trigger_edit_title"
         android:summary="@string/trigger_edit_summary" />
 
+    <SwitchPreferenceCompat
+        android:key="trigger_bubble"
+        android:defaultValue="true"
+        android:dependency="trigger_enable"
+        android:title="@string/trigger_bubble_title"
+        android:summary="@string/trigger_bubble_summary" />
+
     <PreferenceCategory
         android:key="trigger_points"
         android:title="@string/trigger_points_category">

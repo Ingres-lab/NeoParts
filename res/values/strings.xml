@@ -147,6 +147,10 @@
     <string name="aod_wave_title">Show on hand wave</string>
     <string name="aod_wave_summary">Wave a hand over the top of the screen to show the clock and notifications for a few seconds</string>
 
+    <!-- Color accuracy -->
+    <string name="flat_title">Color accuracy</string>
+    <string name="flat_summary">Switch the panel to its flat, color-accurate calibration instead of the vivid default</string>
+
     <!-- Tools -->
     <string name="category_tools">Tools</string>
     <string name="hidedev_title">Hide developer options</string>

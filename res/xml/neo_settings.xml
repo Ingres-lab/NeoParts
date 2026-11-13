@@ -37,6 +37,12 @@
                 android:targetClass="org.neo.parts.AodSettingsActivity" />
         </Preference>
 
+        <SwitchPreferenceCompat
+            android:key="color_accuracy"
+            android:persistent="false"
+            android:title="@string/flat_title"
+            android:summary="@string/flat_summary" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

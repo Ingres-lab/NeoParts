@@ -33,10 +33,13 @@ public class NeoSettingsFragment extends PreferenceFragmentCompat
     private static final String KEY_BATTERY = "battery_monitor";
     private static final String KEY_GPU = "gpu_turnip";
     private static final String KEY_SELINUX = "selinux_enforcing";
+    private static final String KEY_FLAT = "color_accuracy";
 
     static final String PROP_BYPASS = "persist.sys.neo.bypass";
     static final String PROP_GPU = "persist.sys.neo.gpu";
     static final String PROP_SELINUX = "persist.sys.neo.selinux";
+    /* Xiaomi flat (color-accurate) panel mode; init.neo.rc writes mi_disp's disp_param */
+    static final String PROP_FLAT = "persist.sys.neo.flat";
 
     private static final String MODE_ENFORCING = "enforcing";
     private static final String MODE_PERMISSIVE = "permissive";
@@ -89,6 +92,7 @@ public class NeoSettingsFragment extends PreferenceFragmentCompat
     private Preference mBattery;
     private SwitchPreferenceCompat mGpu;
     private SwitchPreferenceCompat mSelinux;
+    private SwitchPreferenceCompat mFlat;
 
     private BatteryManager mBatteryManager;
 
@@ -108,12 +112,16 @@ public class NeoSettingsFragment extends PreferenceFragmentCompat
 
         mSelinux = findPreference(KEY_SELINUX);
         mSelinux.setOnPreferenceChangeListener(this);
+
+        mFlat = findPreference(KEY_FLAT);
+        mFlat.setOnPreferenceChangeListener(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
         mBypass.setChecked(SystemProperties.getBoolean(PROP_BYPASS, false));
+        mFlat.setChecked(SystemProperties.getBoolean(PROP_FLAT, false));
         updateGpu();
         updateSelinux();
         mHandler.post(mBatteryUpdater);
@@ -133,6 +141,10 @@ public class NeoSettingsFragment extends PreferenceFragmentCompat
             mChargingAboveHoldSamples = 0;
             mBypass.setChecked(enabled);
             updateBattery();
+            return true;
+        }
+        if (preference == mFlat) {
+            SystemProperties.set(PROP_FLAT, enabled ? "1" : "0");
             return true;
         }
         if (preference == mGpu) {

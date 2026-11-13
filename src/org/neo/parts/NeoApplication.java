@@ -28,6 +28,7 @@ public class NeoApplication extends Application {
     public void onCreate() {
         super.onCreate();
         register();
+        AodController.init(this);
     }
 
     private void register() {

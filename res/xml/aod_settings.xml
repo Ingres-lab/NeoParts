@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/aod_title">
+
+    <ListPreference
+        android:key="aod_mode"
+        android:title="@string/aod_mode_title"
+        android:summary="%s"
+        android:defaultValue="off"
+        android:entries="@array/aod_mode_entries"
+        android:entryValues="@array/aod_mode_values" />
+
+    <ListPreference
+        android:key="aod_brief_seconds"
+        android:title="@string/aod_brief_title"
+        android:summary="%s"
+        android:defaultValue="5"
+        android:entries="@array/aod_brief_entries"
+        android:entryValues="@array/aod_brief_values" />
+
+    <Preference
+        android:key="aod_schedule_start"
+        android:persistent="false"
+        android:title="@string/aod_schedule_start_title" />
+
+    <Preference
+        android:key="aod_schedule_end"
+        android:persistent="false"
+        android:title="@string/aod_schedule_end_title" />
+
+    <SwitchPreferenceCompat
+        android:key="aod_wave"
+        android:defaultValue="false"
+        android:title="@string/aod_wave_title"
+        android:summary="@string/aod_wave_summary" />
+
+</PreferenceScreen>

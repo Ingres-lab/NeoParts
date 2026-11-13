@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- ro.control_privapp_permissions=enforce: every signature|privileged permission a priv-app
+     requests must be listed here, or system_server aborts at boot. -->
+<permissions>
+    <privapp-permissions package="org.neo.parts">
+        <!-- Restart after switching the Vulkan driver -->
+        <permission name="android.permission.REBOOT" />
+        <!-- Ringing state for the call light (sys.neo.led.call) -->
+        <permission name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
+        <!-- Always-on display modes write doze_always_on -->
+        <permission name="android.permission.WRITE_SECURE_SETTINGS" />
+        <!-- Tools > Hide developer options restarts the app it changes -->
+        <permission name="android.permission.FORCE_STOP_PACKAGES" />
+    </privapp-permissions>
+</permissions>

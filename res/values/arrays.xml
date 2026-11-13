@@ -95,4 +95,42 @@
         <item>00FF40</item>
         <item>FFFFFF</item>
     </string-array>
+
+    <string-array name="smooth_level_entries" translatable="false">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
+    <string-array name="smooth_level_values" translatable="false">
+        <item>low</item>
+        <item>medium</item>
+        <item>high</item>
+    </string-array>
+
+    <string-array name="aod_mode_entries">
+        <item>@string/aod_mode_off</item>
+        <item>@string/aod_mode_always</item>
+        <item>@string/aod_mode_schedule</item>
+        <item>@string/aod_mode_brief</item>
+    </string-array>
+    <string-array name="aod_mode_values" translatable="false">
+        <item>off</item>
+        <item>always</item>
+        <item>schedule</item>
+        <item>brief</item>
+    </string-array>
+    <string-array name="aod_brief_entries">
+        <item>@string/aod_seconds_5</item>
+        <item>@string/aod_seconds_10</item>
+        <item>@string/aod_seconds_15</item>
+        <item>@string/aod_seconds_30</item>
+        <item>@string/aod_seconds_60</item>
+    </string-array>
+    <string-array name="aod_brief_values" translatable="false">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+    </string-array>
 </resources>

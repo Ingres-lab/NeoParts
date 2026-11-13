@@ -12,6 +12,27 @@
     <!-- Ringing state for the call light (sys.neo.led.call) -->
     <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
 
+    <!-- Neo wallpaper on the first boot (WallpaperInitReceiver) -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+
+    <!-- Always-on display modes (AodController) own Settings.Secure.DOZE_ALWAYS_ON; the
+         schedule alarm must fire in deep Doze; hand wave holds the CPU until SystemUI pulses -->
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Tools > Hide developer options restarts an app after its setting changes -->
+    <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
+
+    <!-- Smooth motion video lists the launcher apps -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
     <application
         android:name=".NeoApplication"
         android:persistent="true"
@@ -62,6 +83,41 @@
             android:theme="@style/Theme.SubSettingsBase" />
 
         <activity
+            android:name=".HideDevOptionsActivity"
+            android:label="@string/hidedev_title"
+            android:exported="false"
+            android:theme="@style/Theme.SubSettingsBase" />
+
+        <activity
+            android:name=".SmoothMotionActivity"
+            android:label="@string/smooth_title"
+            android:exported="false"
+            android:theme="@style/Theme.SubSettingsBase" />
+
+        <!-- Also listed in Settings > Display > Lock screen, next to the stock AOD switch -->
+        <activity
+            android:name=".AodSettingsActivity"
+            android:label="@string/aod_title"
+            android:exported="true"
+            android:theme="@style/Theme.SubSettingsBase">
+            <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
+            </intent-filter>
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.lockscreen" />
+            <meta-data
+                android:name="com.android.settings.title"
+                android:resource="@string/aod_title" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:resource="@string/aod_summary" />
+            <meta-data
+                android:name="com.android.settings.profile"
+                android:value="primary_profile_only" />
+        </activity>
+
+        <activity
             android:name=".LightsSettingsActivity"
             android:label="@string/lights_title"
             android:exported="false"
@@ -86,6 +142,14 @@
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
+
+        <receiver
+            android:name=".WallpaperInitReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
     </application>
 </manifest>

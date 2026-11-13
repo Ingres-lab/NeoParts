@@ -25,6 +25,21 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="category_display"
+        android:title="@string/category_display">
+
+        <Preference
+            android:key="aod"
+            android:title="@string/aod_title"
+            android:summary="@string/aod_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.AodSettingsActivity" />
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="category_gaming"
         android:title="@string/category_gaming">
 
@@ -49,6 +64,21 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="category_video"
+        android:title="@string/category_video">
+
+        <Preference
+            android:key="smooth_motion"
+            android:title="@string/smooth_title"
+            android:summary="@string/smooth_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.SmoothMotionActivity" />
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="category_graphics"
         android:title="@string/category_graphics">
 
@@ -67,6 +97,21 @@
             android:key="selinux_enforcing"
             android:persistent="false"
             android:title="@string/selinux_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_tools"
+        android:title="@string/category_tools">
+
+        <Preference
+            android:key="hide_devopts"
+            android:title="@string/hidedev_title"
+            android:summary="@string/hidedev_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.HideDevOptionsActivity" />
+        </Preference>
 
     </PreferenceCategory>
 

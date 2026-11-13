@@ -66,6 +66,15 @@ public class NeoSettingsFragment extends PreferenceFragmentCompat
     /* The firmware only holds the battery at or above this level in bypass. */
     private static final int BYPASS_HOLD_LEVEL = 80;
 
+    /*
+     * The charger needs a moment to switch after the toggle, and the gauge
+     * reports short top-up pulses even while bypass holds. Only call bypass
+     * ineffective after this many consecutive charging readings (1 s apart).
+     */
+    private static final int BYPASS_NOT_HOLDING_SAMPLES = 10;
+
+    private int mChargingAboveHoldSamples;
+
     private final Handler mHandler = new Handler(Looper.getMainLooper());
 
     private final Runnable mBatteryUpdater = new Runnable() {
@@ -121,6 +130,7 @@ public class NeoSettingsFragment extends PreferenceFragmentCompat
         final boolean enabled = (Boolean) newValue;
         if (preference == mBypass) {
             SystemProperties.set(PROP_BYPASS, enabled ? "1" : "0");
+            mChargingAboveHoldSamples = 0;
             mBypass.setChecked(enabled);
             updateBattery();
             return true;
@@ -204,10 +214,16 @@ public class NeoSettingsFragment extends PreferenceFragmentCompat
         if (!plugged) {
             return getString(R.string.bypass_state_unplugged);
         }
+        final boolean chargingAboveHold =
+                intoBatteryMa > IDLE_THRESHOLD_MA && level >= BYPASS_HOLD_LEVEL;
+        mChargingAboveHoldSamples = chargingAboveHold ? mChargingAboveHoldSamples + 1 : 0;
         if (intoBatteryMa > IDLE_THRESHOLD_MA) {
-            return getString(level < BYPASS_HOLD_LEVEL
-                    ? R.string.bypass_state_filling
-                    : R.string.bypass_state_not_holding);
+            if (level < BYPASS_HOLD_LEVEL) {
+                return getString(R.string.bypass_state_filling);
+            }
+            return getString(mChargingAboveHoldSamples >= BYPASS_NOT_HOLDING_SAMPLES
+                    ? R.string.bypass_state_not_holding
+                    : R.string.bypass_state_switching);
         }
         if (intoBatteryMa < -IDLE_THRESHOLD_MA) {
             return getString(R.string.bypass_state_draining);

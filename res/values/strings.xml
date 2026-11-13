@@ -30,6 +30,7 @@
     <string name="bypass_state_working">Bypass is working: the phone runs from the charger and the battery is idle.</string>
     <string name="bypass_state_filling">Charging to 80% first; bypass then holds the battery.</string>
     <string name="bypass_state_not_holding">Bypass is on but the battery is still charging above 80%. Bypass is not taking effect.</string>
+    <string name="bypass_state_switching">Bypass is switching over…</string>
     <string name="bypass_state_draining">The phone draws more than the charger supplies; the battery covers the difference.</string>
 
     <!-- GPU driver -->
@@ -116,4 +117,42 @@
     <string name="lights_event_color">Colour</string>
     <string name="lights_effect_default">Default</string>
     <string name="lights_color_stock">Stock colours</string>
+
+    <!-- Smooth motion video -->
+    <string name="category_video">Video</string>
+    <string name="smooth_title">Smooth motion video</string>
+    <string name="smooth_summary">Double the frame rate of videos with motion interpolation on the DSP</string>
+    <string name="smooth_enable_title">Smooth motion video</string>
+    <string name="smooth_enable_summary">Inserts an interpolated frame between every two video frames (30 → 60 fps, 60 → 120 fps) in the apps below. Applies to the next video an app opens. DRM-protected video is not changed.</string>
+    <string name="smooth_level_title">Strength</string>
+    <string name="smooth_apps_title">Apps</string>
+
+    <!-- Always-on display -->
+    <string name="category_display">Display</string>
+    <string name="aod_title">Always-on display</string>
+    <string name="aod_summary">Always on, scheduled, show briefly, hand wave</string>
+    <string name="aod_mode_title">Show always-on display</string>
+    <string name="aod_mode_off">Off</string>
+    <string name="aod_mode_always">Always</string>
+    <string name="aod_mode_schedule">Scheduled</string>
+    <string name="aod_mode_brief">For a few seconds after the screen turns off</string>
+    <string name="aod_brief_title">Show for</string>
+    <string name="aod_seconds_5">5 seconds</string>
+    <string name="aod_seconds_10">10 seconds</string>
+    <string name="aod_seconds_15">15 seconds</string>
+    <string name="aod_seconds_30">30 seconds</string>
+    <string name="aod_seconds_60">1 minute</string>
+    <string name="aod_schedule_start_title">Start time</string>
+    <string name="aod_schedule_end_title">End time</string>
+    <string name="aod_wave_title">Show on hand wave</string>
+    <string name="aod_wave_summary">Wave a hand over the top of the screen to show the clock and notifications for a few seconds</string>
+
+    <!-- Tools -->
+    <string name="category_tools">Tools</string>
+    <string name="hidedev_title">Hide developer options</string>
+    <string name="hidedev_summary">Banking and other apps that refuse to run with developer options or USB debugging on see them as off</string>
+    <string name="hidedev_info">The apps turned on below see developer options, USB debugging and wireless debugging as off. Everything stays on for you and for every other app. An app is closed when you change it here, so it picks up the change when you open it again.
+
+Apps that check other signs (root, an unlocked bootloader, system properties) may still notice.</string>
+    <string name="hidedev_apps_title">Apps</string>
 </resources>

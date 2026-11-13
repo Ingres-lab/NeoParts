@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/smooth_title">
+
+    <SwitchPreferenceCompat
+        android:key="smooth_enable"
+        android:persistent="false"
+        android:title="@string/smooth_enable_title"
+        android:summary="@string/smooth_enable_summary" />
+
+    <ListPreference
+        android:key="smooth_level"
+        android:persistent="false"
+        android:dependency="smooth_enable"
+        android:title="@string/smooth_level_title"
+        android:summary="%s"
+        android:entries="@array/smooth_level_entries"
+        android:entryValues="@array/smooth_level_values" />
+
+    <PreferenceCategory
+        android:key="smooth_apps"
+        android:dependency="smooth_enable"
+        android:title="@string/smooth_apps_title" />
+
+</PreferenceScreen>

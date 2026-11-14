@@ -162,4 +162,31 @@
 
 Apps that check other signs (root, an unlocked bootloader, system properties) may still notice.</string>
     <string name="hidedev_apps_title">Apps</string>
+
+    <string name="pif_title">Play Integrity</string>
+    <string name="pif_summary">Present a certified device to Google Play Integrity</string>
+    <string name="pif_enable_title">Spoof for Play Integrity</string>
+    <string name="pif_enable_summary">Only Google\'s integrity checker sees the loaded device; every other app sees this phone</string>
+    <string name="pif_current_title">Loaded device</string>
+    <string name="pif_current_none">None. Update or import a pif.json.</string>
+    <string name="pif_current_patch">Security patch %1$s</string>
+    <string name="pif_update_title">Update from Neo</string>
+    <string name="pif_update_summary">Download the device profile the Neo maintainers keep working</string>
+    <string name="pif_import_title">Import pif.json</string>
+    <string name="pif_import_summary">Load a profile from a file</string>
+    <string name="pif_clear_title">Clear</string>
+    <string name="pif_downloading">Downloading…</string>
+    <string name="pif_download_failed">Download failed</string>
+    <string name="pif_invalid">Not a valid pif.json (it needs at least FINGERPRINT)</string>
+    <string name="pif_loaded">Loaded. Play Integrity uses it from the next check.</string>
+    <string name="pif_cleared">Cleared</string>
+    <string name="pif_footer">Google bans fingerprints after a while; update when checks start failing. This can pass basic integrity. Device and strong integrity need a locked bootloader\'s hardware attestation, which no profile can provide.</string>
+
+    <string name="pixel_title">Pixel features</string>
+    <string name="pixel_summary">Let Google apps enable their Pixel-only features (Gboard voice typing, Gemini, wallpapers)</string>
+    <string name="pixel_enable_title">Pixel features in Google apps</string>
+    <string name="pixel_enable_summary">The apps below see a Pixel 10 Pro XL. Only those apps are changed; the rest of the system keeps this phone\'s identity.</string>
+    <string name="pixel_default_apps">Always included</string>
+    <string name="pixel_more_apps">More apps</string>
+    <string name="pixel_footer">Changed apps are closed so they pick it up when opened again. Features that need Pixel hardware (Tensor, Gemini Nano) may still not work.</string>
 </resources>

@@ -119,6 +119,24 @@
                 android:targetClass="org.neo.parts.HideDevOptionsActivity" />
         </Preference>
 
+        <Preference
+            android:key="play_integrity"
+            android:title="@string/pif_title"
+            android:summary="@string/pif_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.PlayIntegrityActivity" />
+        </Preference>
+
+        <Preference
+            android:key="pixel_features"
+            android:title="@string/pixel_title"
+            android:summary="@string/pixel_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.PixelFeaturesActivity" />
+        </Preference>
+
     </PreferenceCategory>
 
 </PreferenceScreen>

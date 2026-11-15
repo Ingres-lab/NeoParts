@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.hardware.display.ColorDisplayManager;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,6 +41,10 @@ public class NeoSettingsFragment extends PreferenceFragmentCompat
     static final String PROP_SELINUX = "persist.sys.neo.selinux";
     /* Xiaomi flat (color-accurate) panel mode; init.neo.rc writes mi_disp's disp_param */
     static final String PROP_FLAT = "persist.sys.neo.flat";
+    /* Display color mode (ColorDisplayManager vendor range) used while Color accuracy is on */
+    private static final int COLOR_MODE_SRGB = 267;
+    /* Mode to go back to when the switch is turned off; the user's previous choice */
+    static final String PROP_FLAT_PREV_MODE = "persist.sys.neo.flat_prev_mode";
 
     private static final String MODE_ENFORCING = "enforcing";
     private static final String MODE_PERMISSIVE = "permissive";
@@ -145,6 +150,7 @@ public class NeoSettingsFragment extends PreferenceFragmentCompat
         }
         if (preference == mFlat) {
             SystemProperties.set(PROP_FLAT, enabled ? "1" : "0");
+            applyColorMode(enabled);
             return true;
         }
         if (preference == mGpu) {
@@ -301,6 +307,36 @@ public class NeoSettingsFragment extends PreferenceFragmentCompat
                 .show();
     }
 
+    /* ---------------- Color accuracy ---------------- */
+
+    /*
+     * Panel flat mode (init.neo.rc) alone is a subtle DDIC tweak. Also move the display
+     * color mode to sRGB so colors are accurate, and restore the previous mode afterwards.
+     */
+    private void applyColorMode(boolean accurate) {
+        final ColorDisplayManager cdm =
+                requireContext().getSystemService(ColorDisplayManager.class);
+        if (cdm == null) {
+            return;
+        }
+        try {
+            if (accurate) {
+                final int current = cdm.getColorMode();
+                if (current != COLOR_MODE_SRGB) {
+                    SystemProperties.set(PROP_FLAT_PREV_MODE, Integer.toString(current));
+                }
+                cdm.setColorMode(COLOR_MODE_SRGB);
+            } else {
+                final int prev = SystemProperties.getInt(PROP_FLAT_PREV_MODE, -1);
+                if (prev >= 0) {
+                    cdm.setColorMode(prev);
+                }
+            }
+        } catch (RuntimeException e) {
+            android.util.Log.w("NeoParts", "setColorMode failed", e);
+        }
+    }
+
     /* ---------------- SELinux ---------------- */
 
     private void setSelinuxMode(String mode) {
@@ -310,7 +346,14 @@ public class NeoSettingsFragment extends PreferenceFragmentCompat
     }
 
     private void updateSelinux() {
-        final boolean enforcing = SELinux.isSELinuxEnforced();
+        /*
+         * SELinux.isSELinuxEnforced() reads /sys/fs/selinux/enforce, which platform_app is
+         * denied: it returns false, so the switch showed "permissive" while enforcing.
+         * persist.sys.neo.selinux is what this page last asked the vendor helper to apply.
+         */
+        final String requested = SystemProperties.get(PROP_SELINUX, "");
+        final boolean enforcing = MODE_ENFORCING.equals(requested)
+                || (!MODE_PERMISSIVE.equals(requested) && SELinux.isSELinuxEnforced());
         mSelinux.setChecked(enforcing);
         mSelinux.setSummary(enforcing
                 ? R.string.selinux_summary_enforcing

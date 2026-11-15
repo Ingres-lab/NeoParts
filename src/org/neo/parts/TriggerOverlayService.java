@@ -176,6 +176,8 @@ public class TriggerOverlayService extends Service {
         mBubbleParams.layoutInDisplayCutoutMode =
                 WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS;
         mBubbleParams.setTitle("NeoTriggerBubble");
+        // Files (DocumentsUI) and other apps hide all non-system overlays while visible
+        mBubbleParams.setSystemApplicationOverlay(true);
         final Rect bounds = mWindowManager.getCurrentWindowMetrics().getBounds();
         placeBubbleParams(mPrefs.getInt(KEY_BUBBLE_X, bounds.width() - size - dp(8)),
                 mPrefs.getInt(KEY_BUBBLE_Y, bounds.height() / 3));
@@ -339,6 +341,7 @@ public class TriggerOverlayService extends Service {
         lp.layoutInDisplayCutoutMode =
                 WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS;
         lp.setTitle("NeoTriggerEditor");
+        lp.setSystemApplicationOverlay(true);
         mEditor = root;
         mWindowManager.addView(root, lp);
     }

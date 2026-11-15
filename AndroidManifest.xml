@@ -26,6 +26,12 @@
          permission, granted to the platform-signed app); the editor collapses the shade -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+    <!-- StatusBarManager.collapsePanels() when the trigger editor opens from the QS tile -->
+    <uses-permission android:name="android.permission.STATUS_BAR" />
+    <!-- Color accuracy also selects the sRGB display color mode -->
+    <uses-permission android:name="android.permission.CONTROL_DISPLAY_COLOR_TRANSFORMS" />
+    <!-- Keeps the trigger bubble visible over apps that hide non-system overlays (Files) -->
+    <uses-permission android:name="android.permission.SYSTEM_APPLICATION_OVERLAY" />
 
     <!-- Tools > Play Integrity: download pif.json, restart DroidGuard to apply it;
          Tools > Pixel features lists Google apps without a launcher icon (Gboard) -->

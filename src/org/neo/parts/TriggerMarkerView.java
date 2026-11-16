@@ -10,6 +10,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -33,11 +34,15 @@ final class TriggerMarkerView extends View {
     private final float mRadius;
     private int mDragging = -1;
     private boolean mLoaded;
+    private boolean mHaptics = true;
+    private float mTravel;          // distance dragged since the last tick
+    private final float mTickPx;
 
     TriggerMarkerView(Context context) {
         super(context);
         mWindowManager = context.getSystemService(WindowManager.class);
         mRadius = dp(34);
+        mTickPx = dp(28);
         mFill.setColor(0x6600B4FF);
         mRing.setColor(NEO_BLUE);
         mRing.setStyle(Paint.Style.STROKE);
@@ -46,6 +51,18 @@ final class TriggerMarkerView extends View {
         mText.setTextAlign(Paint.Align.CENTER);
         mText.setTextSize(dp(22));
         mText.setFakeBoldText(true);
+    }
+
+    void setHaptics(boolean on) {
+        mHaptics = on;
+    }
+
+    /** Haptic feedback that also works while the system touch vibration is switched off. */
+    private void tick(int type) {
+        if (mHaptics) {
+            performHapticFeedback(type, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING
+                    | HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+        }
     }
 
     void clear(int i) {
@@ -139,16 +156,42 @@ final class TriggerMarkerView extends View {
                         }
                     }
                 }
+                if (mDragging >= 0) {
+                    mTravel = 0;
+                    tick(HapticFeedbackConstants.GESTURE_START);  // picked up
+                }
                 // fall through
             case MotionEvent.ACTION_MOVE:
                 if (mDragging >= 0) {
-                    mX[mDragging] = clamp(e.getX(), getWidth());
-                    mY[mDragging] = clamp(e.getY(), getHeight());
+                    final float ox = mX[mDragging], oy = mY[mDragging];
+                    final float nx = clamp(e.getX(), getWidth());
+                    final float ny = clamp(e.getY(), getHeight());
+                    mX[mDragging] = nx;
+                    mY[mDragging] = ny;
                     invalidate();
+                    if (e.getActionMasked() == MotionEvent.ACTION_MOVE) {
+                        // a firmer click when the marker crosses the middle of the screen, a
+                        // light tick every few millimetres otherwise, so it can be placed
+                        // without looking
+                        final float cx = getWidth() / 2f, cy = getHeight() / 2f;
+                        if ((ox - cx) * (nx - cx) < 0 || (oy - cy) * (ny - cy) < 0) {
+                            tick(HapticFeedbackConstants.CONTEXT_CLICK);
+                            mTravel = 0;
+                        } else {
+                            mTravel += (float) Math.hypot(nx - ox, ny - oy);
+                            if (mTravel >= mTickPx) {
+                                mTravel = 0;
+                                tick(HapticFeedbackConstants.SEGMENT_FREQUENT_TICK);
+                            }
+                        }
+                    }
                 }
                 return true;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
+                if (mDragging >= 0) {
+                    tick(HapticFeedbackConstants.GESTURE_END);  // dropped
+                }
                 mDragging = -1;
                 return true;
         }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:title="@string/haptics_title">
+
+    <PreferenceCategory
+        android:key="haptics_strength_category"
+        android:title="@string/haptics_strength_category">
+
+        <SeekBarPreference
+            android:key="haptics_strength"
+            android:persistent="false"
+            android:defaultValue="100"
+            android:title="@string/haptics_strength_title"
+            android:summary="@string/haptics_strength_summary"
+            android:min="25"
+            android:max="150"
+            app:showSeekBarValue="true"
+            app:seekBarIncrement="5"
+            app:updatesContinuously="false" />
+
+        <Preference
+            android:key="haptics_reset"
+            android:persistent="false"
+            android:title="@string/haptics_reset_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="haptics_effects"
+        android:title="@string/haptics_effects_category" />
+
+    <PreferenceCategory
+        android:key="haptics_primitives"
+        android:title="@string/haptics_primitives_category" />
+
+    <PreferenceCategory
+        android:key="haptics_switches"
+        android:title="@string/haptics_switches_category">
+
+        <SwitchPreferenceCompat
+            android:key="haptics_touch"
+            android:persistent="false"
+            android:title="@string/haptics_touch_title"
+            android:summary="@string/haptics_touch_summary" />
+
+        <SwitchPreferenceCompat
+            android:key="haptics_keyboard"
+            android:persistent="false"
+            android:title="@string/haptics_keyboard_title" />
+
+        <SwitchPreferenceCompat
+            android:key="haptics_charging"
+            android:persistent="false"
+            android:title="@string/haptics_charging_title" />
+
+        <SwitchPreferenceCompat
+            android:key="haptics_ringing"
+            android:persistent="false"
+            android:title="@string/haptics_ringing_title" />
+
+    </PreferenceCategory>
+
+    <Preference
+        android:key="haptics_footer"
+        android:persistent="false"
+        android:selectable="false"
+        android:summary="@string/haptics_footer" />
+
+</PreferenceScreen>

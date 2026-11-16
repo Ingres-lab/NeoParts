@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:title="@string/logs_title">
+
+    <Preference
+        android:key="logs_share"
+        android:persistent="false"
+        android:title="@string/logs_share_title"
+        android:summary="@string/logs_share_summary" />
+
+    <ListPreference
+        android:key="logs_mode"
+        android:persistent="false"
+        android:title="@string/logs_mode_title"
+        android:entries="@array/logs_mode_names"
+        android:entryValues="@array/logs_mode_values"
+        app:useSimpleSummaryProvider="true" />
+
+    <Preference
+        android:key="logs_footer"
+        android:persistent="false"
+        android:selectable="false"
+        android:summary="@string/logs_footer" />
+
+</PreferenceScreen>

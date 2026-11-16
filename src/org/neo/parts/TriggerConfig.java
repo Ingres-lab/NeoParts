@@ -21,6 +21,9 @@ final class TriggerConfig {
     static final String PROP_LEFT = "persist.sys.neo.trigger.left";
     static final String PROP_RIGHT = "persist.sys.neo.trigger.right";
 
+    /** Published by neo_triggerd: bit 0 = left trigger unlocked (popped up), bit 1 = right. */
+    static final String PROP_POPPED = "sys.neo.trigger.pop";
+
     static final int SCALE = 10000;
 
     private TriggerConfig() {}
@@ -38,6 +41,11 @@ final class TriggerConfig {
         public String toString() {
             return x + "," + y;
         }
+    }
+
+    /** Bit mask of the triggers that are currently unlocked (popped up). */
+    static int unlockedMask() {
+        return SystemProperties.getInt(PROP_POPPED, 0);
     }
 
     static boolean isEnabled() {

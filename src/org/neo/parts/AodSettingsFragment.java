@@ -16,7 +16,7 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import java.util.Calendar;
 
-/** Always-on display mode, brief timeout, schedule and hand wave. AodController applies them. */
+/** Always-on display mode, brief timeout and schedule. AodController applies them. */
 public class AodSettingsFragment extends PreferenceFragmentCompat
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 

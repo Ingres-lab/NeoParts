@@ -13,11 +13,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.database.ContentObserver;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.media.AudioManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
@@ -39,10 +34,6 @@ import java.util.Calendar;
  * Changing the setting while the phone is already dozing needs the DozeTriggers patch in
  * frameworks/base (SystemUI otherwise only reads it when doze starts).
  *
- * Hand wave: while the screen is off and the AOD is not showing, a short near -> far on the
- * (wake-up) proximity sensor sends SystemUI's doze pulse intent, which shows the ambient
- * display for a few seconds. A long "near" (pocket, face down) never triggers it.
- *
  * Flipping the stock "Always show time and info" switch or the AOD Quick Settings tile is
  * taken as choosing "always" / "off" here, so the two never fight.
  */
@@ -53,7 +44,6 @@ public final class AodController implements SharedPreferences.OnSharedPreference
     static final String KEY_BRIEF_SECONDS = "aod_brief_seconds";
     static final String KEY_SCHEDULE_START = "aod_schedule_start";  // minutes after midnight
     static final String KEY_SCHEDULE_END = "aod_schedule_end";
-    static final String KEY_WAVE = "aod_wave";
 
     static final String MODE_OFF = "off";
     static final String MODE_ALWAYS = "always";
@@ -64,12 +54,7 @@ public final class AodController implements SharedPreferences.OnSharedPreference
     static final int DEFAULT_SCHEDULE_START = 7 * 60;
     static final int DEFAULT_SCHEDULE_END = 23 * 60;
 
-    private static final String PULSE_ACTION = "com.android.systemui.doze.pulse";
     private static final String SCHEDULE_ACTION = "org.neo.parts.AOD_SCHEDULE";
-    private static final String SYSTEMUI = "com.android.systemui";
-    /* near -> far within this window counts as a wave; longer is a pocket or a face-down phone */
-    private static final long WAVE_MAX_NEAR_MS = 2000;
-    private static final long WAVE_MIN_INTERVAL_MS = 1500;
 
     private static AodController sInstance;
 
@@ -78,19 +63,12 @@ public final class AodController implements SharedPreferences.OnSharedPreference
     private final SharedPreferences mPrefs;
     private final AlarmManager mAlarmManager;
     private final PowerManager mPowerManager;
-    private final AudioManager mAudioManager;
-    private final SensorManager mSensorManager;
-    private final Sensor mProximity;
-    private final PowerManager.WakeLock mPulseWakeLock;
 
     private boolean mInteractive = true;
     /* brief mode: the screen went off and the N seconds are over */
     private boolean mBriefExpired;
     /* the last value this class wrote, to tell our writes from the user's */
     private int mWritten = -1;
-    private boolean mWaveListening;
-    private long mNearSince;
-    private long mLastPulse;
 
     private final AlarmManager.OnAlarmListener mBriefAlarm = () -> {
         mBriefExpired = true;
@@ -138,28 +116,6 @@ public final class AodController implements SharedPreferences.OnSharedPreference
         }
     };
 
-    private final SensorEventListener mWaveListener = new SensorEventListener() {
-        @Override
-        public void onSensorChanged(SensorEvent event) {
-            final boolean near = event.values[0] < mProximity.getMaximumRange();
-            final long now = SystemClock.elapsedRealtime();
-            if (near) {
-                mNearSince = now;
-                return;
-            }
-            final long nearFor = now - mNearSince;
-            if (mNearSince != 0 && nearFor <= WAVE_MAX_NEAR_MS
-                    && now - mLastPulse >= WAVE_MIN_INTERVAL_MS) {
-                pulse();
-            }
-            mNearSince = 0;
-        }
-
-        @Override
-        public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        }
-    };
-
     static synchronized void init(Context context) {
         if (sInstance == null) {
             sInstance = new AodController(context.getApplicationContext());
@@ -172,10 +128,6 @@ public final class AodController implements SharedPreferences.OnSharedPreference
         mPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         mAlarmManager = context.getSystemService(AlarmManager.class);
         mPowerManager = context.getSystemService(PowerManager.class);
-        mAudioManager = context.getSystemService(AudioManager.class);
-        mSensorManager = context.getSystemService(SensorManager.class);
-        mProximity = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY, true /* wakeUp */);
-        mPulseWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG + ":pulse");
     }
 
     private void start() {
@@ -241,43 +193,8 @@ public final class AodController implements SharedPreferences.OnSharedPreference
             mAlarmManager.cancel(mScheduleIntent);
         }
         writeAlwaysOn(on ? 1 : 0);
-        updateWaveListener(on);
         Log.d(TAG, "apply(" + why + "): mode=" + mode + " aod=" + on
-                + " interactive=" + mInteractive + " wave=" + mWaveListening);
-    }
-
-    private void updateWaveListener(boolean aodShowing) {
-        final boolean want = mProximity != null && mPrefs.getBoolean(KEY_WAVE, false)
-                && !mInteractive && !aodShowing;
-        if (want == mWaveListening) {
-            return;
-        }
-        mWaveListening = want;
-        mNearSince = 0;
-        if (want) {
-            mSensorManager.registerListener(mWaveListener, mProximity,
-                    SensorManager.SENSOR_DELAY_NORMAL, mHandler);
-        } else {
-            mSensorManager.unregisterListener(mWaveListener);
-        }
-    }
-
-    private void pulse() {
-        if (mPowerManager.isInteractive()) {
-            return;
-        }
-        // Never light the screen against the ear during a call
-        final int audioMode = mAudioManager.getMode();
-        if (audioMode == AudioManager.MODE_IN_CALL
-                || audioMode == AudioManager.MODE_IN_COMMUNICATION
-                || audioMode == AudioManager.MODE_CALL_SCREENING) {
-            return;
-        }
-        mLastPulse = SystemClock.elapsedRealtime();
-        // Keep the CPU up until SystemUI has the broadcast
-        mPulseWakeLock.acquire(1000);
-        mContext.sendBroadcast(new Intent(PULSE_ACTION).setPackage(SYSTEMUI));
-        Log.d(TAG, "hand wave: pulse");
+                + " interactive=" + mInteractive);
     }
 
     private boolean inSchedule() {

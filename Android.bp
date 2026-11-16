@@ -19,13 +19,26 @@ android_app {
 
     static_libs: [
         "androidx.preference_preference",
+        "androidx.core_core",
     ],
 
     optimize: {
         enabled: false,
     },
 
-    required: ["privapp_whitelist_org.neo.parts"],
+    required: [
+        "privapp_whitelist_org.neo.parts",
+        "sysconfig_org.neo.parts",
+    ],
+}
+
+// The bug report service only accepts callers that the device names here
+prebuilt_etc {
+    name: "sysconfig_org.neo.parts",
+    system_ext_specific: true,
+    sub_dir: "sysconfig",
+    src: "sysconfig_org.neo.parts.xml",
+    filename_from_src: true,
 }
 
 prebuilt_etc {

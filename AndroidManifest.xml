@@ -17,10 +17,13 @@
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
 
     <!-- Always-on display modes (AodController) own Settings.Secure.DOZE_ALWAYS_ON; the
-         schedule alarm must fire in deep Doze; hand wave holds the CPU until SystemUI pulses -->
+         schedule alarm must fire in deep Doze -->
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <!-- Logs page: asks Android for a full bug report (the app is also named in sysconfig) -->
+    <uses-permission android:name="android.permission.DUMP" />
+    <!-- Haptics page: plays the feel-test effects -->
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <!-- Shoulder trigger overlay: floating button and editor over games (signature
          permission, granted to the platform-signed app); the editor collapses the shade -->
@@ -38,6 +41,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
+    <!-- Gestures > Three-finger screenshot: a gesture input monitor that can cancel the touch it
+         takes over, and SystemUI's screenshot service (both signature permissions) -->
+    <uses-permission android:name="android.permission.MONITOR_INPUT" />
+    <uses-permission android:name="com.android.systemui.permission.SELF" />
 
     <!-- Tools > Hide developer options restarts an app after its setting changes -->
     <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />
@@ -118,6 +126,29 @@
             android:theme="@style/Theme.SubSettingsBase" />
 
         <activity
+            android:name=".LogsSettingsActivity"
+            android:label="@string/logs_title"
+            android:exported="false"
+            android:theme="@style/Theme.SubSettingsBase" />
+
+        <!-- Shares the bug report zip from the cache through the share sheet -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="org.neo.parts.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".HapticsSettingsActivity"
+            android:label="@string/haptics_title"
+            android:exported="false"
+            android:theme="@style/Theme.SubSettingsBase" />
+
+        <activity
             android:name=".SmoothMotionActivity"
             android:label="@string/smooth_title"
             android:exported="false"
@@ -145,6 +176,12 @@
                 android:name="com.android.settings.profile"
                 android:value="primary_profile_only" />
         </activity>
+
+        <activity
+            android:name=".MonetSettingsActivity"
+            android:label="@string/monet_title"
+            android:exported="false"
+            android:theme="@style/Theme.SubSettingsBase" />
 
         <activity
             android:name=".LightsSettingsActivity"

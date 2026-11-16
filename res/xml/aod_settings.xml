@@ -32,10 +32,4 @@
         android:persistent="false"
         android:title="@string/aod_schedule_end_title" />
 
-    <SwitchPreferenceCompat
-        android:key="aod_wave"
-        android:defaultValue="false"
-        android:title="@string/aod_wave_title"
-        android:summary="@string/aod_wave_summary" />
-
 </PreferenceScreen>

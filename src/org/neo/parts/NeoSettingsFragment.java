@@ -35,6 +35,7 @@ public class NeoSettingsFragment extends PreferenceFragmentCompat
     private static final String KEY_GPU = "gpu_turnip";
     private static final String KEY_SELINUX = "selinux_enforcing";
     private static final String KEY_FLAT = "color_accuracy";
+    private static final String KEY_THREE_FINGER = "three_finger_screenshot";
 
     static final String PROP_BYPASS = "persist.sys.neo.bypass";
     static final String PROP_GPU = "persist.sys.neo.gpu";
@@ -98,6 +99,7 @@ public class NeoSettingsFragment extends PreferenceFragmentCompat
     private SwitchPreferenceCompat mGpu;
     private SwitchPreferenceCompat mSelinux;
     private SwitchPreferenceCompat mFlat;
+    private SwitchPreferenceCompat mThreeFinger;
 
     private BatteryManager mBatteryManager;
 
@@ -120,6 +122,9 @@ public class NeoSettingsFragment extends PreferenceFragmentCompat
 
         mFlat = findPreference(KEY_FLAT);
         mFlat.setOnPreferenceChangeListener(this);
+
+        mThreeFinger = findPreference(KEY_THREE_FINGER);
+        mThreeFinger.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -127,6 +132,7 @@ public class NeoSettingsFragment extends PreferenceFragmentCompat
         super.onResume();
         mBypass.setChecked(SystemProperties.getBoolean(PROP_BYPASS, false));
         mFlat.setChecked(SystemProperties.getBoolean(PROP_FLAT, false));
+        mThreeFinger.setChecked(ThreeFingerScreenshot.isEnabled(requireContext()));
         updateGpu();
         updateSelinux();
         mHandler.post(mBatteryUpdater);
@@ -151,6 +157,10 @@ public class NeoSettingsFragment extends PreferenceFragmentCompat
         if (preference == mFlat) {
             SystemProperties.set(PROP_FLAT, enabled ? "1" : "0");
             applyColorMode(enabled);
+            return true;
+        }
+        if (preference == mThreeFinger) {
+            ThreeFingerScreenshot.setEnabled(requireContext(), enabled);
             return true;
         }
         if (preference == mGpu) {

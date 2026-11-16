@@ -26,6 +26,7 @@ import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.Display;
 import android.view.Gravity;
+import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -56,11 +57,17 @@ import androidx.preference.PreferenceManager;
 public class TriggerOverlayService extends Service {
 
     static final String KEY_BUBBLE = "trigger_bubble";
+    /** Open the editor by itself when a trigger is unlocked (popped up). */
+    static final String KEY_AUTO_EDIT = "trigger_auto_edit";
+    /** Haptic ticks while placing the touch points. */
+    static final String KEY_HAPTIC = "trigger_haptic";
     private static final String KEY_BUBBLE_X = "trigger_bubble_x";
     private static final String KEY_BUBBLE_Y = "trigger_bubble_y";
 
     private static final String ACTION_UPDATE = "org.neo.parts.trigger.UPDATE";
     private static final String ACTION_EDIT = "org.neo.parts.trigger.EDIT";
+    private static final String ACTION_UNLOCKED = "org.neo.parts.trigger.UNLOCKED";
+    private static final String ACTION_LOCKED = "org.neo.parts.trigger.LOCKED";
 
     private static final int BUBBLE_DP = 48;
     private static final long LONG_PRESS_MS = 600;
@@ -75,6 +82,8 @@ public class TriggerOverlayService extends Service {
     private View mEditor;
     /* long-pressed away; shown again when mapping is toggled, on save or from the tile */
     private boolean mBubbleHidden;
+    /* the editor was opened by a trigger being unlocked, so locking it again closes it */
+    private boolean mOpenedByUnlock;
 
     private final ComponentCallbacks mConfigCallback = new ComponentCallbacks() {
         @Override
@@ -94,6 +103,18 @@ public class TriggerOverlayService extends Service {
     static void update(Context context) {
         context.startService(new Intent(context, TriggerOverlayService.class)
                 .setAction(ACTION_UPDATE));
+    }
+
+    /** A trigger was unlocked (popped up): opens the editor if the user asked for that. */
+    static void triggerUnlocked(Context context) {
+        context.startService(new Intent(context, TriggerOverlayService.class)
+                .setAction(ACTION_UNLOCKED));
+    }
+
+    /** Both triggers are locked (retracted) again. */
+    static void triggersLocked(Context context) {
+        context.startService(new Intent(context, TriggerOverlayService.class)
+                .setAction(ACTION_LOCKED));
     }
 
     /** Opens the overlay editor over whatever is on screen. */
@@ -122,6 +143,20 @@ public class TriggerOverlayService extends Service {
         if (ACTION_EDIT.equals(action)) {
             mBubbleHidden = false;
             showEditor();
+        } else if (ACTION_UNLOCKED.equals(action)) {
+            if (TriggerConfig.isEnabled() && mPrefs.getBoolean(KEY_AUTO_EDIT, false)
+                    && mEditor == null) {
+                mOpenedByUnlock = true;
+                showEditor();
+                if (mEditor != null) {
+                    haptic(mEditor, HapticFeedbackConstants.CONFIRM);
+                }
+            }
+        } else if (ACTION_LOCKED.equals(action)) {
+            if (mOpenedByUnlock && mEditor != null) {
+                closeEditor();
+            }
+            mOpenedByUnlock = false;
         } else {
             // a settings change shows a long-pressed bubble again
             mBubbleHidden = false;
@@ -300,6 +335,7 @@ public class TriggerOverlayService extends Service {
 
         final FrameLayout root = new FrameLayout(mContext);
         final TriggerMarkerView markers = new TriggerMarkerView(mContext);
+        markers.setHaptics(mPrefs.getBoolean(KEY_HAPTIC, true));
         root.addView(markers, new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
@@ -319,8 +355,12 @@ public class TriggerOverlayService extends Service {
         bar.setPadding(0, 0, 0, dp(32));
         bar.addView(button(R.string.trigger_editor_clear_left, v -> markers.clear(0)));
         bar.addView(button(R.string.trigger_editor_clear_right, v -> markers.clear(1)));
-        bar.addView(button(android.R.string.cancel, v -> closeEditor()));
+        bar.addView(button(android.R.string.cancel, v -> {
+            haptic(v, HapticFeedbackConstants.REJECT);
+            closeEditor();
+        }));
         bar.addView(button(R.string.trigger_editor_save, v -> {
+            haptic(v, HapticFeedbackConstants.CONFIRM);
             markers.save();
             closeEditor();
         }));
@@ -348,6 +388,7 @@ public class TriggerOverlayService extends Service {
 
     private void closeEditor() {
         removeEditor();
+        mOpenedByUnlock = false;
         mBubbleHidden = false;
         updateBubble();
         stopIfIdle();
@@ -363,6 +404,14 @@ public class TriggerOverlayService extends Service {
     private void stopIfIdle() {
         if (mBubble == null && mEditor == null) {
             stopSelf();
+        }
+    }
+
+    /** Haptic feedback that also works while the system touch vibration is switched off. */
+    private void haptic(View v, int type) {
+        if (mPrefs.getBoolean(KEY_HAPTIC, true)) {
+            v.performHapticFeedback(type, HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING
+                    | HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
         }
     }
 

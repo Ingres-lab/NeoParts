@@ -37,11 +37,32 @@
                 android:targetClass="org.neo.parts.AodSettingsActivity" />
         </Preference>
 
+        <Preference
+            android:key="monet"
+            android:title="@string/monet_title"
+            android:summary="@string/monet_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.MonetSettingsActivity" />
+        </Preference>
+
         <SwitchPreferenceCompat
             android:key="color_accuracy"
             android:persistent="false"
             android:title="@string/flat_title"
             android:summary="@string/flat_summary" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_gestures"
+        android:title="@string/category_gestures">
+
+        <SwitchPreferenceCompat
+            android:key="three_finger_screenshot"
+            android:persistent="false"
+            android:title="@string/three_finger_title"
+            android:summary="@string/three_finger_summary" />
 
     </PreferenceCategory>
 
@@ -65,6 +86,15 @@
             <intent
                 android:targetPackage="org.neo.parts"
                 android:targetClass="org.neo.parts.LightsSettingsActivity" />
+        </Preference>
+
+        <Preference
+            android:key="haptics"
+            android:title="@string/haptics_title"
+            android:summary="@string/haptics_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.HapticsSettingsActivity" />
         </Preference>
 
     </PreferenceCategory>
@@ -135,6 +165,15 @@
             <intent
                 android:targetPackage="org.neo.parts"
                 android:targetClass="org.neo.parts.PixelFeaturesActivity" />
+        </Preference>
+
+        <Preference
+            android:key="logs"
+            android:title="@string/logs_title"
+            android:summary="@string/logs_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.LogsSettingsActivity" />
         </Preference>
 
     </PreferenceCategory>

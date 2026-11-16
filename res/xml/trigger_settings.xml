@@ -25,6 +25,20 @@
         android:title="@string/trigger_bubble_title"
         android:summary="@string/trigger_bubble_summary" />
 
+    <SwitchPreferenceCompat
+        android:key="trigger_auto_edit"
+        android:defaultValue="false"
+        android:dependency="trigger_enable"
+        android:title="@string/trigger_auto_edit_title"
+        android:summary="@string/trigger_auto_edit_summary" />
+
+    <SwitchPreferenceCompat
+        android:key="trigger_haptic"
+        android:defaultValue="true"
+        android:dependency="trigger_enable"
+        android:title="@string/trigger_haptic_title"
+        android:summary="@string/trigger_haptic_summary" />
+
     <PreferenceCategory
         android:key="trigger_points"
         android:title="@string/trigger_points_category">

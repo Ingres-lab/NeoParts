@@ -65,6 +65,10 @@
     <string name="trigger_edit_summary">Drag L and R onto the screen. In a game, tap the floating trigger button or the Trigger points tile to place them right over the game.</string>
     <string name="trigger_bubble_title">Floating button</string>
     <string name="trigger_bubble_summary">A small trigger button floats over apps while mapping is on. Tap it in a game to place L and R over the game; drag to move it, long-press to hide it.</string>
+    <string name="trigger_auto_edit_title">Open the editor when a trigger is unlocked</string>
+    <string name="trigger_auto_edit_summary">Pushing a shoulder trigger up from its locked position opens the touch point editor over the running game, so L and R can be moved on the fly without the floating button. Pushing the trigger back down closes it again unless you saved. Needs trigger touch mapping on.</string>
+    <string name="trigger_haptic_title">Haptic feedback</string>
+    <string name="trigger_haptic_summary">A tick when a point is picked up, every few millimetres while it moves, a firmer click when it crosses the middle of the screen, and a confirmation on Save. Works even if touch vibration is off in system settings.</string>
     <string name="trigger_bubble_hidden">Trigger button hidden. Use the Trigger points tile, or switch mapping off and on, to show it again.</string>
     <string name="trigger_points_category">Touch points</string>
     <string name="trigger_left_title">Left trigger</string>
@@ -122,6 +126,51 @@
     <string name="lights_color_stock">Stock colours</string>
 
     <!-- Smooth motion video -->
+    <!-- Haptics -->
+    <string name="haptics_title">Haptics</string>
+    <string name="haptics_summary">Vibration strength and a feel test for the motor</string>
+    <string name="haptics_strength_category">Strength</string>
+    <string name="haptics_strength_title">Vibration strength</string>
+    <string name="haptics_strength_summary">Scales every vibration of the motor, in percent. Above 100 % the short effects get stronger; the long steady buzz is capped at full strength. Android\'s own intensity settings still apply on top.</string>
+    <string name="haptics_reset_title">Back to 100 %</string>
+    <string name="haptics_effects_category">Feel the effects</string>
+    <string name="haptics_fx_click">Click</string>
+    <string name="haptics_fx_double_click">Double click</string>
+    <string name="haptics_fx_tick">Tick</string>
+    <string name="haptics_fx_heavy_click">Heavy click</string>
+    <string name="haptics_fx_thud">Thud</string>
+    <string name="haptics_fx_pop">Pop</string>
+    <string name="haptics_fx_texture">Texture tick</string>
+    <string name="haptics_fx_buzz">Steady buzz (half a second)</string>
+    <string name="haptics_primitives_category">Building blocks</string>
+    <string name="haptics_pr_click">Click</string>
+    <string name="haptics_pr_thud">Thud</string>
+    <string name="haptics_pr_spin">Spin</string>
+    <string name="haptics_pr_quick_rise">Quick rise</string>
+    <string name="haptics_pr_slow_rise">Slow rise</string>
+    <string name="haptics_pr_quick_fall">Quick fall</string>
+    <string name="haptics_pr_tick">Light tick</string>
+    <string name="haptics_pr_low_tick">Low tick</string>
+    <string name="haptics_switches_category">When to vibrate</string>
+    <string name="haptics_touch_title">Touch feedback</string>
+    <string name="haptics_touch_summary">Taps, gestures and the system feedback of apps</string>
+    <string name="haptics_keyboard_title">Keyboard vibration</string>
+    <string name="haptics_charging_title">Vibrate when charging starts</string>
+    <string name="haptics_ringing_title">Vibrate when ringing</string>
+    <string name="haptics_footer">The rows above play through the normal vibration service, exactly as an app would trigger them. The switches are the same settings as in Settings &gt; Sound &amp; vibration.</string>
+
+    <!-- Logs -->
+    <string name="logs_title">Logs and battery recorder</string>
+    <string name="logs_summary">Share the logs of the random shutdown and battery percentage problem</string>
+    <string name="logs_share_title">Share logs</string>
+    <string name="logs_share_summary">Builds one zip with everything the system recorded, then opens the share sheet. Takes one to three minutes. Use it right after the problem happened.</string>
+    <string name="logs_working">Collecting, please wait. Keep the phone awake.</string>
+    <string name="logs_progress">Collecting: %1$d %%</string>
+    <string name="logs_ready">Ready (%1$s). Choose where to send it.</string>
+    <string name="logs_failed">Could not collect the logs (%1$s)</string>
+    <string name="logs_mode_title">Battery recorder</string>
+    <string name="logs_footer">The system keeps its logs, kernel log included, on disk across restarts, and the recorder writes the battery, charger and suspend state into them every 10 seconds. Quiet does not ask the battery chip anything, Active also reads the gauge and charger values. Switch to Active only when asked to; it can change how the chip behaves.</string>
+
     <string name="category_video">Video</string>
     <string name="smooth_title">Smooth motion video</string>
     <string name="smooth_summary">Double the frame rate of videos with motion interpolation on the DSP</string>
@@ -133,7 +182,7 @@
     <!-- Always-on display -->
     <string name="category_display">Display</string>
     <string name="aod_title">Always-on display</string>
-    <string name="aod_summary">Always on, scheduled, show briefly, hand wave</string>
+    <string name="aod_summary">Always on, scheduled, show briefly</string>
     <string name="aod_mode_title">Show always-on display</string>
     <string name="aod_mode_off">Off</string>
     <string name="aod_mode_always">Always</string>
@@ -147,8 +196,6 @@
     <string name="aod_seconds_60">1 minute</string>
     <string name="aod_schedule_start_title">Start time</string>
     <string name="aod_schedule_end_title">End time</string>
-    <string name="aod_wave_title">Show on hand wave</string>
-    <string name="aod_wave_summary">Wave a hand over the top of the screen to show the clock and notifications for a few seconds</string>
 
     <!-- Color accuracy -->
     <string name="flat_title">Color accuracy</string>
@@ -156,6 +203,11 @@
 
     <!-- Tools -->
     <string name="category_tools">Tools</string>
+
+    <!-- Gestures -->
+    <string name="category_gestures">Gestures</string>
+    <string name="three_finger_title">Three-finger screenshot</string>
+    <string name="three_finger_summary">Swipe down with three fingers to take a screenshot</string>
     <string name="hidedev_title">Hide developer options</string>
     <string name="hidedev_summary">Banking and other apps that refuse to run with developer options or USB debugging on see them as off</string>
     <string name="hidedev_info">The apps turned on below see developer options, USB debugging and wireless debugging as off. Everything stays on for you and for every other app. An app is closed when you change it here, so it picks up the change when you open it again.
@@ -189,4 +241,13 @@ Apps that check other signs (root, an unlocked bootloader, system properties) ma
     <string name="pixel_default_apps">Always included</string>
     <string name="pixel_more_apps">More apps</string>
     <string name="pixel_footer">Changed apps are closed so they pick it up when opened again. Features that need Pixel hardware (Tensor, Gemini Nano) may still not work.</string>
+    <string name="monet_title">Monet engine</string>
+    <string name="monet_summary">Tune accent colourfulness, background tint and hue</string>
+    <string name="monet_accent_title">Accent colourfulness</string>
+    <string name="monet_accent_summary">Percent of the wallpaper colour strength used for accents; 100 is stock</string>
+    <string name="monet_neutral_title">Background tint</string>
+    <string name="monet_neutral_summary">How strongly backgrounds and surfaces pick up the accent; 100 is stock</string>
+    <string name="monet_hue_title">Hue shift</string>
+    <string name="monet_hue_summary">Rotate the accent colours, in degrees</string>
+    <string name="monet_reset_title">Reset to stock</string>
 </resources>

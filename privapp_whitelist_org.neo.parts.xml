@@ -19,6 +19,8 @@
         <permission name="android.permission.STATUS_BAR" />
         <!-- Color accuracy selects the sRGB display color mode (ColorDisplayManager) -->
         <permission name="android.permission.CONTROL_DISPLAY_COLOR_TRANSFORMS" />
+        <!-- Logs page: BugreportManager.startBugreport (and the sysconfig bugreport allowlist) -->
+        <permission name="android.permission.DUMP" />
         <!-- Trigger bubble/editor are system application overlays -->
         <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY" />
     </privapp-permissions>

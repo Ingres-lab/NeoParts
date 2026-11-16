@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:title="@string/monet_title">
+
+    <SeekBarPreference
+        android:key="monet_accent_chroma"
+        android:persistent="false"
+        android:title="@string/monet_accent_title"
+        android:summary="@string/monet_accent_summary"
+        android:min="0"
+        android:max="200"
+        app:seekBarIncrement="5"
+        app:showSeekBarValue="true"
+        app:updatesContinuously="false" />
+
+    <SeekBarPreference
+        android:key="monet_neutral_chroma"
+        android:persistent="false"
+        android:title="@string/monet_neutral_title"
+        android:summary="@string/monet_neutral_summary"
+        android:min="0"
+        android:max="300"
+        app:seekBarIncrement="10"
+        app:showSeekBarValue="true"
+        app:updatesContinuously="false" />
+
+    <SeekBarPreference
+        android:key="monet_hue_shift"
+        android:persistent="false"
+        android:title="@string/monet_hue_title"
+        android:summary="@string/monet_hue_summary"
+        android:min="-180"
+        android:max="180"
+        app:seekBarIncrement="5"
+        app:showSeekBarValue="true"
+        app:updatesContinuously="false" />
+
+    <Preference
+        android:key="monet_reset"
+        android:persistent="false"
+        android:title="@string/monet_reset_title" />
+
+</PreferenceScreen>

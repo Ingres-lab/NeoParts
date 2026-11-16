@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<config>
+    <!-- Settings > Neo > Logs and battery recorder > Share logs takes a full bug report -->
+    <bugreport-whitelisted package="org.neo.parts" />
+</config>

@@ -12,12 +12,12 @@ import android.text.format.DateFormat;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceFragmentCompat;
 
 import java.util.Calendar;
+import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 /** Always-on display mode, brief timeout and schedule. AodController applies them. */
-public class AodSettingsFragment extends PreferenceFragmentCompat
+public class AodSettingsFragment extends SettingsBasePreferenceFragment
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private ListPreference mMode;

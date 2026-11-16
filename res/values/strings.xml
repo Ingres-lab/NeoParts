@@ -6,7 +6,7 @@
 <resources>
     <string name="app_name">Neo</string>
     <string name="neo_title">Neo</string>
-    <string name="neo_summary">Triggers, rear lights, charging, graphics, SELinux</string>
+    <string name="neo_summary">Charging, display, gaming, gestures, graphics</string>
 
     <string name="category_charging">Charging</string>
     <string name="category_gaming">Gaming</string>
@@ -250,4 +250,35 @@ Apps that check other signs (root, an unlocked bootloader, system properties) ma
     <string name="monet_hue_title">Hue shift</string>
     <string name="monet_hue_summary">Rotate the accent colours, in degrees</string>
     <string name="monet_reset_title">Reset to stock</string>
+
+    <!-- Neo home (grouped entries with icons) and its sub-pages -->
+    <string name="page_battery_title">Battery &amp; charging</string>
+    <string name="page_battery_summary">Live current, bypass charging</string>
+    <string name="page_battery_summary_state">%1$d%% · %2$s</string>
+    <string name="page_battery_bypass_on">Bypass charging on</string>
+    <string name="page_battery_bypass_off">Live current, bypass charging</string>
+    <string name="page_display_summary">Always-on display, Monet, color accuracy</string>
+    <string name="page_gaming_summary">Shoulder triggers, rear lights</string>
+    <string name="page_haptics_summary">Vibration strength, feel test</string>
+    <string name="page_gestures_summary">Three-finger screenshot</string>
+    <string name="page_gestures_summary_on">Three-finger screenshot on</string>
+    <string name="page_graphics_title">Video &amp; graphics</string>
+    <string name="page_graphics_summary">Smooth motion video, Vulkan driver</string>
+    <string name="page_graphics_summary_state">Smooth motion video · Vulkan: %1$s</string>
+    <string name="gpu_name_turnip">Turnip</string>
+    <string name="gpu_name_adreno">Qualcomm</string>
+    <string name="page_security_title">Security &amp; app compatibility</string>
+    <string name="page_security_summary">SELinux, Play Integrity, Pixel features</string>
+    <string name="page_security_summary_state">SELinux %1$s · Play Integrity, Pixel features</string>
+    <string name="selinux_state_enforcing">enforcing</string>
+    <string name="selinux_state_permissive">permissive</string>
+    <string name="page_logs_title">Logs &amp; diagnostics</string>
+    <string name="page_logs_summary">Battery recorder, share logs</string>
+    <string name="category_battery_now">Right now</string>
+    <string name="category_lock_screen">Lock screen</string>
+    <string name="category_colour">Colors</string>
+    <string name="category_gaming_controls">Controls</string>
+    <string name="category_gaming_lights">Lights</string>
+    <string name="category_gesture_shortcuts">Shortcuts</string>
+    <string name="category_app_compat">App compatibility</string>
 </resources>

@@ -8,12 +8,12 @@ package org.neo.parts;
 import android.os.Bundle;
 
 import androidx.preference.Preference;
-import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreferenceCompat;
 
 import java.util.Locale;
+import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
-public class TriggerSettingsFragment extends PreferenceFragmentCompat
+public class TriggerSettingsFragment extends SettingsBasePreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     private static final String KEY_ENABLE = "trigger_enable";

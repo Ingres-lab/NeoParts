@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- Neo > Gestures -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/category_gestures">
+
+    <PreferenceCategory
+        android:key="category_gesture_shortcuts"
+        android:title="@string/category_gesture_shortcuts">
+
+        <SwitchPreferenceCompat
+            android:key="three_finger_screenshot"
+            android:persistent="false"
+            android:title="@string/three_finger_title"
+            android:summary="@string/three_finger_summary" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

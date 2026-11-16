@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- Neo > Gaming: shoulder triggers and rear lights -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/category_gaming">
+
+    <PreferenceCategory
+        android:key="category_gaming_controls"
+        android:title="@string/category_gaming_controls">
+
+        <Preference
+            android:key="shoulder_triggers"
+            android:title="@string/trigger_title"
+            android:summary="@string/trigger_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.TriggerSettingsActivity" />
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_gaming_lights"
+        android:title="@string/category_gaming_lights">
+
+        <Preference
+            android:key="rear_lights"
+            android:title="@string/lights_title"
+            android:summary="@string/lights_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.LightsSettingsActivity" />
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

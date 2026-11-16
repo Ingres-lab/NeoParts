@@ -10,17 +10,17 @@ import android.os.SystemProperties;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SeekBarPreference;
 import androidx.preference.SwitchPreferenceCompat;
 
 import java.util.Locale;
+import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 /**
  * Rear "X" lights (AW22xxx controller). The values go to persist.sys.neo.led.*
  * and vendor init applies them (device/xiaomi/ingres/neo/lights/neo_lights.rc).
  */
-public class LightsSettingsFragment extends PreferenceFragmentCompat
+public class LightsSettingsFragment extends SettingsBasePreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     private static final String KEY_EFFECT = "lights_effect";

@@ -17,7 +17,6 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreferenceCompat;
 
@@ -33,6 +32,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 /*
  * Tools > Play Integrity: loads a pif.json (Build fields of a certified device) into
@@ -41,7 +41,7 @@ import java.util.Map;
  * This can give BASIC integrity; DEVICE and STRONG need hardware attestation of a
  * locked bootloader, which no fingerprint can provide.
  */
-public class PlayIntegrityFragment extends PreferenceFragmentCompat {
+public class PlayIntegrityFragment extends SettingsBasePreferenceFragment {
 
     static final String PROP_PREFIX = "persist.sys.neo.pif.";
     private static final String PROP_ENABLE = PROP_PREFIX + "enable";

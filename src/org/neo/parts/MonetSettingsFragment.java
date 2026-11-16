@@ -9,14 +9,14 @@ import android.os.Bundle;
 import android.provider.Settings;
 
 import androidx.preference.Preference;
-import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SeekBarPreference;
+import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 /**
  * Neo Monet tuning. The values are Settings.Secure integers; SystemUI's ThemeOverlayController
  * observes them and re-tones the wallpaper colours (see NeoMonetTuning in frameworks/libs).
  */
-public class MonetSettingsFragment extends PreferenceFragmentCompat {
+public class MonetSettingsFragment extends SettingsBasePreferenceFragment {
     // Keep in sync with com.android.systemui.monet.NeoMonetTuning
     private static final String KEY_ACCENT = "neo_monet_accent_chroma";
     private static final String KEY_NEUTRAL = "neo_monet_neutral_chroma";

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- Neo > Display: always-on display, Monet and colour accuracy -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/category_display">
+
+    <PreferenceCategory
+        android:key="category_lock"
+        android:title="@string/category_lock_screen">
+
+        <Preference
+            android:key="aod"
+            android:title="@string/aod_title"
+            android:summary="@string/aod_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.AodSettingsActivity" />
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_colour"
+        android:title="@string/category_colour">
+
+        <Preference
+            android:key="monet"
+            android:title="@string/monet_title"
+            android:summary="@string/monet_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.MonetSettingsActivity" />
+        </Preference>
+        <SwitchPreferenceCompat
+            android:key="color_accuracy"
+            android:persistent="false"
+            android:title="@string/flat_title"
+            android:summary="@string/flat_summary" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

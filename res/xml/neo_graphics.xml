@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- Neo > Video and graphics: smooth motion and the Vulkan driver -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/page_graphics_title">
+
+    <PreferenceCategory
+        android:key="category_video"
+        android:title="@string/category_video">
+
+        <Preference
+            android:key="smooth_motion"
+            android:title="@string/smooth_title"
+            android:summary="@string/smooth_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.SmoothMotionActivity" />
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_graphics"
+        android:title="@string/category_graphics">
+
+        <SwitchPreferenceCompat
+            android:key="gpu_turnip"
+            android:persistent="false"
+            android:title="@string/gpu_turnip_title" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

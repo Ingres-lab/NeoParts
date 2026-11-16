@@ -17,7 +17,6 @@ import android.text.TextUtils;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreferenceCompat;
 
@@ -25,6 +24,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 /*
  * Tools > Hide developer options: the chosen apps read "off" for developer options,
@@ -33,7 +33,7 @@ import java.util.Set;
  * neo_hide_devopts_packages; SettingsProvider (frameworks/base, NeoDevOptionsHider)
  * answers those apps with 0. Nothing changes for any other app or for the system.
  */
-public class HideDevOptionsFragment extends PreferenceFragmentCompat {
+public class HideDevOptionsFragment extends SettingsBasePreferenceFragment {
 
     static final String KEY_PACKAGES = "neo_hide_devopts_packages";
 

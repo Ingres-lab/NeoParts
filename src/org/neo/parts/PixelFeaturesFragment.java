@@ -17,7 +17,6 @@ import android.text.TextUtils;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreferenceCompat;
 
@@ -28,13 +27,14 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 /*
  * Tools > Pixel features: Google apps that only enable some features on Pixels (Gboard's
  * Rambler voice typing, Gemini, Pixel wallpapers...) see a Pixel 10 Pro XL. Only those
  * apps' own processes are changed (NeoPropHooks); Play Integrity has its own profile.
  */
-public class PixelFeaturesFragment extends PreferenceFragmentCompat {
+public class PixelFeaturesFragment extends SettingsBasePreferenceFragment {
 
     private static final String PROP_ENABLE = "persist.sys.neo.pixel.enable";
     private static final String SETTING_APPS = "neo_pixel_spoof_apps";

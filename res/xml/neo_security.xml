@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- Neo > Security and app compatibility -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/page_security_title">
+
+    <PreferenceCategory
+        android:key="category_security"
+        android:title="@string/category_security">
+
+        <SwitchPreferenceCompat
+            android:key="selinux_enforcing"
+            android:persistent="false"
+            android:title="@string/selinux_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_spoof"
+        android:title="@string/category_app_compat">
+
+        <Preference
+            android:key="play_integrity"
+            android:title="@string/pif_title"
+            android:summary="@string/pif_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.PlayIntegrityActivity" />
+        </Preference>
+        <Preference
+            android:key="pixel_features"
+            android:title="@string/pixel_title"
+            android:summary="@string/pixel_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.PixelFeaturesActivity" />
+        </Preference>
+        <Preference
+            android:key="hide_devopts"
+            android:title="@string/hidedev_title"
+            android:summary="@string/hidedev_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.HideDevOptionsActivity" />
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

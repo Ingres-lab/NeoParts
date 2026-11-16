@@ -17,9 +17,9 @@ import android.provider.Settings;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SeekBarPreference;
 import androidx.preference.SwitchPreferenceCompat;
+import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 /**
  * Haptics for the AW86927 motor. The master strength is read by the Neo vibrator HAL on every
@@ -27,7 +27,7 @@ import androidx.preference.SwitchPreferenceCompat;
  * The effect and primitive rows play through the normal vibrator service, i.e. exactly what an
  * app gets, to judge the waveforms by feel. The switches are the stock Android settings.
  */
-public class HapticsSettingsFragment extends PreferenceFragmentCompat {
+public class HapticsSettingsFragment extends SettingsBasePreferenceFragment {
 
     static final String PROP_STRENGTH = "persist.sys.neo.haptic.strength";
 

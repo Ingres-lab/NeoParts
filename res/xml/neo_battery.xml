@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<!-- Neo > Battery and charging: live current and bypass charging -->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/page_battery_title">
+
+    <PreferenceCategory
+        android:key="category_live"
+        android:title="@string/category_battery_now">
+
+        <Preference
+            android:key="battery_monitor"
+            android:persistent="false"
+            android:selectable="false"
+            android:title="@string/battery_monitor_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_charging"
+        android:title="@string/category_charging">
+
+        <SwitchPreferenceCompat
+            android:key="bypass_charging"
+            android:persistent="false"
+            android:title="@string/bypass_charging_title"
+            android:summary="@string/bypass_charging_summary" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

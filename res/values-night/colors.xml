@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: Neo
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <color name="neo_icon_green_bg">#ff80da88</color>
+    <color name="neo_icon_orange_bg">#ffffb683</color>
+    <color name="neo_icon_red_bg">#ffffb3ae</color>
+    <color name="neo_icon_pink_bg">#ffffaee4</color>
+    <color name="neo_icon_blue_bg">#ffa1c9ff</color>
+    <color name="neo_icon_cyan_bg">#ff60d5f3</color>
+    <color name="neo_icon_purple_bg">#ffd9bafd</color>
+    <color name="neo_icon_grey_bg">#ffc7c7c7</color>
+</resources>

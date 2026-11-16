@@ -3,179 +3,105 @@
      SPDX-FileCopyrightText: Neo
      SPDX-License-Identifier: Apache-2.0
 -->
+<!-- Neo home: grouped entries with coloured icons, laid out like the Settings homepage.
+     Untitled categories only split the rounded cards. -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/neo_title">
 
-    <PreferenceCategory
-        android:key="category_charging"
-        android:title="@string/category_charging">
-
-        <SwitchPreferenceCompat
-            android:key="bypass_charging"
-            android:persistent="false"
-            android:title="@string/bypass_charging_title"
-            android:summary="@string/bypass_charging_summary" />
-
+    <PreferenceCategory android:key="group_device">
         <Preference
-            android:key="battery_monitor"
-            android:persistent="false"
-            android:selectable="false"
-            android:title="@string/battery_monitor_title" />
-
+            android:key="battery"
+            android:icon="@drawable/ic_neo_home_battery"
+            android:title="@string/page_battery_title"
+            android:summary="@string/page_battery_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.NeoPageActivity">
+                <extra android:name="page" android:value="battery" />
+            </intent>
+        </Preference>
+        <Preference
+            android:key="display"
+            android:icon="@drawable/ic_neo_home_display"
+            android:title="@string/category_display"
+            android:summary="@string/page_display_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.NeoPageActivity">
+                <extra android:name="page" android:value="display" />
+            </intent>
+        </Preference>
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:key="category_display"
-        android:title="@string/category_display">
-
+    <PreferenceCategory android:key="group_play">
         <Preference
-            android:key="aod"
-            android:title="@string/aod_title"
-            android:summary="@string/aod_summary">
+            android:key="gaming"
+            android:icon="@drawable/ic_neo_home_gaming"
+            android:title="@string/category_gaming"
+            android:summary="@string/page_gaming_summary">
             <intent
                 android:targetPackage="org.neo.parts"
-                android:targetClass="org.neo.parts.AodSettingsActivity" />
+                android:targetClass="org.neo.parts.NeoPageActivity">
+                <extra android:name="page" android:value="gaming" />
+            </intent>
         </Preference>
-
-        <Preference
-            android:key="monet"
-            android:title="@string/monet_title"
-            android:summary="@string/monet_summary">
-            <intent
-                android:targetPackage="org.neo.parts"
-                android:targetClass="org.neo.parts.MonetSettingsActivity" />
-        </Preference>
-
-        <SwitchPreferenceCompat
-            android:key="color_accuracy"
-            android:persistent="false"
-            android:title="@string/flat_title"
-            android:summary="@string/flat_summary" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="category_gestures"
-        android:title="@string/category_gestures">
-
-        <SwitchPreferenceCompat
-            android:key="three_finger_screenshot"
-            android:persistent="false"
-            android:title="@string/three_finger_title"
-            android:summary="@string/three_finger_summary" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="category_gaming"
-        android:title="@string/category_gaming">
-
-        <Preference
-            android:key="shoulder_triggers"
-            android:title="@string/trigger_title"
-            android:summary="@string/trigger_summary">
-            <intent
-                android:targetPackage="org.neo.parts"
-                android:targetClass="org.neo.parts.TriggerSettingsActivity" />
-        </Preference>
-
-        <Preference
-            android:key="rear_lights"
-            android:title="@string/lights_title"
-            android:summary="@string/lights_summary">
-            <intent
-                android:targetPackage="org.neo.parts"
-                android:targetClass="org.neo.parts.LightsSettingsActivity" />
-        </Preference>
-
         <Preference
             android:key="haptics"
+            android:icon="@drawable/ic_neo_home_haptics"
             android:title="@string/haptics_title"
-            android:summary="@string/haptics_summary">
+            android:summary="@string/page_haptics_summary">
             <intent
                 android:targetPackage="org.neo.parts"
                 android:targetClass="org.neo.parts.HapticsSettingsActivity" />
         </Preference>
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="category_video"
-        android:title="@string/category_video">
-
         <Preference
-            android:key="smooth_motion"
-            android:title="@string/smooth_title"
-            android:summary="@string/smooth_summary">
+            android:key="gestures"
+            android:icon="@drawable/ic_neo_home_gestures"
+            android:title="@string/category_gestures"
+            android:summary="@string/page_gestures_summary">
             <intent
                 android:targetPackage="org.neo.parts"
-                android:targetClass="org.neo.parts.SmoothMotionActivity" />
+                android:targetClass="org.neo.parts.NeoPageActivity">
+                <extra android:name="page" android:value="gestures" />
+            </intent>
         </Preference>
-
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:key="category_graphics"
-        android:title="@string/category_graphics">
-
-        <SwitchPreferenceCompat
-            android:key="gpu_turnip"
-            android:persistent="false"
-            android:title="@string/gpu_turnip_title" />
-
+    <PreferenceCategory android:key="group_media">
+        <Preference
+            android:key="graphics"
+            android:icon="@drawable/ic_neo_home_graphics"
+            android:title="@string/page_graphics_title"
+            android:summary="@string/page_graphics_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.NeoPageActivity">
+                <extra android:name="page" android:value="graphics" />
+            </intent>
+        </Preference>
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:key="category_security"
-        android:title="@string/category_security">
-
-        <SwitchPreferenceCompat
-            android:key="selinux_enforcing"
-            android:persistent="false"
-            android:title="@string/selinux_title" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="category_tools"
-        android:title="@string/category_tools">
-
+    <PreferenceCategory android:key="group_system">
         <Preference
-            android:key="hide_devopts"
-            android:title="@string/hidedev_title"
-            android:summary="@string/hidedev_summary">
+            android:key="security"
+            android:icon="@drawable/ic_neo_home_security"
+            android:title="@string/page_security_title"
+            android:summary="@string/page_security_summary">
             <intent
                 android:targetPackage="org.neo.parts"
-                android:targetClass="org.neo.parts.HideDevOptionsActivity" />
+                android:targetClass="org.neo.parts.NeoPageActivity">
+                <extra android:name="page" android:value="security" />
+            </intent>
         </Preference>
-
-        <Preference
-            android:key="play_integrity"
-            android:title="@string/pif_title"
-            android:summary="@string/pif_summary">
-            <intent
-                android:targetPackage="org.neo.parts"
-                android:targetClass="org.neo.parts.PlayIntegrityActivity" />
-        </Preference>
-
-        <Preference
-            android:key="pixel_features"
-            android:title="@string/pixel_title"
-            android:summary="@string/pixel_summary">
-            <intent
-                android:targetPackage="org.neo.parts"
-                android:targetClass="org.neo.parts.PixelFeaturesActivity" />
-        </Preference>
-
         <Preference
             android:key="logs"
-            android:title="@string/logs_title"
-            android:summary="@string/logs_summary">
+            android:icon="@drawable/ic_neo_home_logs"
+            android:title="@string/page_logs_title"
+            android:summary="@string/page_logs_summary">
             <intent
                 android:targetPackage="org.neo.parts"
                 android:targetClass="org.neo.parts.LogsSettingsActivity" />
         </Preference>
-
     </PreferenceCategory>
 
 </PreferenceScreen>

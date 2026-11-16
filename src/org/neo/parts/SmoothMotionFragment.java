@@ -14,7 +14,6 @@ import android.os.SystemProperties;
 
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreferenceCompat;
 
 import java.util.ArrayList;
@@ -22,6 +21,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 /*
  * "Smooth motion video": doubles the frame rate of video in the chosen apps with
@@ -30,7 +30,7 @@ import java.util.Set;
  * them inside each app when it sets up a hardware video decoder, so a change
  * applies to the next video the app opens.
  */
-public class SmoothMotionFragment extends PreferenceFragmentCompat {
+public class SmoothMotionFragment extends SettingsBasePreferenceFragment {
 
     static final String PROP_ENABLE = "persist.sys.neo.smooth.enable";
     static final String PROP_LEVEL = "persist.sys.neo.smooth.level";

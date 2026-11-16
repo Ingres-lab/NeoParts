@@ -19,13 +19,13 @@ import android.util.Log;
 import androidx.core.content.FileProvider;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceFragmentCompat;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 /**
  * Logs for hunting the random-shutdown / battery-percentage problem.
@@ -35,7 +35,7 @@ import java.util.Locale;
  * log every 10 s. "Share logs" asks Android for a full bug report (which contains all of it plus
  * battery stats, power state, crashes and boot information) and opens the share sheet.
  */
-public class LogsSettingsFragment extends PreferenceFragmentCompat {
+public class LogsSettingsFragment extends SettingsBasePreferenceFragment {
 
     private static final String TAG = "NeoLogs";
     static final String PROP_MODE = "persist.sys.neo.batrec.mode";

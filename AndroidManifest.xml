@@ -46,6 +46,8 @@
          takes over, and SystemUI's screenshot service (both signature permissions) -->
     <uses-permission android:name="android.permission.MONITOR_INPUT" />
     <uses-permission android:name="com.android.systemui.permission.SELF" />
+    <!-- Gaming > Game performance: watch the focused app (TaskStackListener, getFocusedRootTaskInfo) -->
+    <uses-permission android:name="android.permission.MANAGE_ACTIVITY_TASKS" />
     <!-- ScreenshotHelper binds SystemUI's screenshot service as UserHandle.CURRENT -->
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS" />
 
@@ -106,6 +108,12 @@
         <!-- Neo home entries open their page here (extra "page") -->
         <activity
             android:name=".NeoPageActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SubSettingsBase" />
+
+        <activity
+            android:name=".GameModeActivity"
+            android:label="@string/gamemode_title"
             android:exported="false"
             android:theme="@style/Theme.SubSettingsBase" />
 

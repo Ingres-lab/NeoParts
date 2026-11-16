@@ -339,4 +339,24 @@ Apps that check other signs (root, an unlocked bootloader, system properties) ma
     <string name="monet_picker_hue">Hue</string>
     <string name="monet_picker_saturation">Saturation</string>
     <string name="monet_picker_brightness">Brightness</string>
+
+    <!-- Gaming > Game performance -->
+    <string name="category_gaming_performance">Performance</string>
+    <string name="gamemode_title">Game performance</string>
+    <string name="gamemode_summary">Keep the CPU responsive while a game or Wine/Proton app is in front</string>
+    <string name="gamemode_info">While one of the apps below is in front, the CPU cannot drop below the chosen level for it. Games built on Wine/Proton keep handing work between threads; the scheduler sees each thread waiting and lowers the clock, which makes every hand-off slower. Applies only while the game is in front.</string>
+    <string name="gamemode_enable_title">Game performance mode</string>
+    <string name="gamemode_enable_summary">Raise the CPU floor while a chosen app is in front</string>
+    <string name="gamemode_floor_title">CPU floor</string>
+    <string name="gamemode_apps_title">Games and emulators</string>
+    <string-array name="gamemode_floor_entries">
+        <item>Light (30%)</item>
+        <item>Balanced (50%, recommended)</item>
+        <item>Strong (70%)</item>
+    </string-array>
+    <string-array name="gamemode_floor_values" translatable="false">
+        <item>30</item>
+        <item>50</item>
+        <item>70</item>
+    </string-array>
 </resources>

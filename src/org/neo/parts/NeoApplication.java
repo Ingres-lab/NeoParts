@@ -32,6 +32,7 @@ public class NeoApplication extends Application {
         TriggerOverlayService.update(this);
         TriggerUnlockWatcher.init(this);
         ThreeFingerScreenshot.init(this);
+        GameModeController.init(this);
     }
 
     private void register() {

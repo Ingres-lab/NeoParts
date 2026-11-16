@@ -3,7 +3,7 @@
      SPDX-FileCopyrightText: Neo
      SPDX-License-Identifier: Apache-2.0
 -->
-<!-- Neo > Gaming: shoulder triggers and rear lights -->
+<!-- Neo > Gaming: shoulder triggers, game performance and rear lights -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/category_gaming">
 
@@ -18,6 +18,21 @@
             <intent
                 android:targetPackage="org.neo.parts"
                 android:targetClass="org.neo.parts.TriggerSettingsActivity" />
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_gaming_performance"
+        android:title="@string/category_gaming_performance">
+
+        <Preference
+            android:key="game_mode"
+            android:title="@string/gamemode_title"
+            android:summary="@string/gamemode_summary">
+            <intent
+                android:targetPackage="org.neo.parts"
+                android:targetClass="org.neo.parts.GameModeActivity" />
         </Preference>
 
     </PreferenceCategory>

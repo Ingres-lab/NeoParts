@@ -46,6 +46,8 @@
          takes over, and SystemUI's screenshot service (both signature permissions) -->
     <uses-permission android:name="android.permission.MONITOR_INPUT" />
     <uses-permission android:name="com.android.systemui.permission.SELF" />
+    <!-- ScreenshotHelper binds SystemUI's screenshot service as UserHandle.CURRENT -->
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS" />
 
     <!-- Tools > Hide developer options restarts an app after its setting changes -->
     <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES" />

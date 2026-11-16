@@ -23,5 +23,7 @@
         <permission name="android.permission.DUMP" />
         <!-- Trigger bubble/editor are system application overlays -->
         <permission name="android.permission.SYSTEM_APPLICATION_OVERLAY" />
+        <!-- Three-finger screenshot: ScreenshotHelper binds SystemUI as UserHandle.CURRENT -->
+        <permission name="android.permission.INTERACT_ACROSS_USERS" />
     </privapp-permissions>
 </permissions>

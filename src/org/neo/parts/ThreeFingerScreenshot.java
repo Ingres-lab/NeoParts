@@ -126,8 +126,14 @@ final class ThreeFingerScreenshot {
     }
 
     private void takeScreenshot() {
-        mScreenshotHelper.takeScreenshot(WindowManager.TAKE_SCREENSHOT_FULLSCREEN,
-                SCREENSHOT_VENDOR_GESTURE, mMainHandler, null);
+        // ScreenshotHelper binds SystemUI's screenshot service as UserHandle.CURRENT, which needs
+        // INTERACT_ACROSS_USERS. Never let a failed request take NeoParts (persistent) down.
+        try {
+            mScreenshotHelper.takeScreenshot(WindowManager.TAKE_SCREENSHOT_FULLSCREEN,
+                    SCREENSHOT_VENDOR_GESTURE, mMainHandler, null);
+        } catch (RuntimeException e) {
+            Log.e(TAG, "screenshot request failed", e);
+        }
     }
 
     private final class Receiver extends InputEventReceiver {

@@ -242,14 +242,15 @@ Apps that check other signs (root, an unlocked bootloader, system properties) ma
     <string name="pixel_more_apps">More apps</string>
     <string name="pixel_footer">Changed apps are closed so they pick it up when opened again. Features that need Pixel hardware (Tensor, Gemini Nano) may still not work.</string>
     <string name="monet_title">Monet engine</string>
-    <string name="monet_summary">Tune accent colourfulness, background tint and hue</string>
+    <string name="monet_summary">Theme styles, custom colours and fine tuning</string>
     <string name="monet_accent_title">Accent colourfulness</string>
     <string name="monet_accent_summary">Percent of the wallpaper colour strength used for accents; 100 is stock</string>
     <string name="monet_neutral_title">Background tint</string>
     <string name="monet_neutral_summary">How strongly backgrounds and surfaces pick up the accent; 100 is stock</string>
     <string name="monet_hue_title">Hue shift</string>
     <string name="monet_hue_summary">Rotate the accent colours, in degrees</string>
-    <string name="monet_reset_title">Reset to stock</string>
+    <string name="monet_reset_title">Reset everything</string>
+    <string name="monet_reset_summary">Tonal spot style, wallpaper colours, automatic palettes and stock tuning</string>
 
     <!-- Neo home (grouped entries with icons) and its sub-pages -->
     <string name="page_battery_title">Battery &amp; charging</string>
@@ -281,4 +282,61 @@ Apps that check other signs (root, an unlocked bootloader, system properties) ma
     <string name="category_gaming_lights">Lights</string>
     <string name="category_gesture_shortcuts">Shortcuts</string>
     <string name="category_app_compat">App compatibility</string>
+
+    <!-- Monet engine page -->
+    <string name="monet_category_preview">Current palettes</string>
+    <string-array name="monet_palette_short_names" translatable="false">
+        <item>Primary</item>
+        <item>Secondary</item>
+        <item>Tertiary</item>
+        <item>Neutral</item>
+        <item>Neutral var.</item>
+    </string-array>
+
+    <string name="monet_category_style">Theme style</string>
+    <string name="monet_style_tonal_spot_title">Tonal spot</string>
+    <string name="monet_style_tonal_spot_summary">Android\'s default. Calm, muted accents taken from the seed colour, with softly tinted backgrounds. Easy on the eyes and works with any wallpaper.</string>
+    <string name="monet_style_spritz_title">Neutral</string>
+    <string name="monet_style_spritz_summary">Almost greyscale: the seed colour is only a faint hint in accents and backgrounds. Clean, quiet and professional.</string>
+    <string name="monet_style_vibrant_title">Vibrant</string>
+    <string name="monet_style_vibrant_summary">Strong, saturated accents from the seed colour, with secondary and tertiary colours shifted to neighbouring hues for variety. Bold and energetic.</string>
+    <string name="monet_style_expressive_title">Expressive</string>
+    <string name="monet_style_expressive_summary">Playful and unexpected: the main accent is rotated away from the seed colour, so the theme uses colours that are not in your wallpaper at all.</string>
+    <string name="monet_style_rainbow_title">Rainbow</string>
+    <string name="monet_style_rainbow_summary">Colourful accents with pure grey backgrounds. The accent colours stand out sharply because nothing behind them is tinted.</string>
+    <string name="monet_style_fruit_salad_title">Fruit salad</string>
+    <string name="monet_style_fruit_salad_summary">A mix of fruity, neighbouring hues: primary and secondary are shifted about 50° from the seed colour and the seed colour itself becomes the tertiary accent. Cheerful and varied.</string>
+    <string name="monet_style_content_title">Content</string>
+    <string name="monet_style_content_summary">Stays faithful to the seed colour: the main accent is the exact colour (same strength), and backgrounds carry a little of it. Best when you pick a colour you want to see as-is.</string>
+    <string name="monet_style_monochromatic_title">Monochrome</string>
+    <string name="monet_style_monochromatic_summary">Black, white and greys only; no colour anywhere. Individual colours picked below still apply on top.</string>
+
+    <string name="monet_category_source">Seed colour</string>
+    <string name="monet_source_wallpaper_title">Wallpaper colours</string>
+    <string name="monet_source_wallpaper_summary">Monet picks the seed colour from your wallpaper and changes it with every new wallpaper</string>
+    <string name="monet_source_custom_title">Custom colour</string>
+    <string name="monet_source_custom_summary">Use a colour you choose as the seed, whatever the wallpaper</string>
+    <string name="monet_seed_title">Seed colour</string>
+    <string name="monet_seed_summary_wallpaper">From the wallpaper. Tap to choose your own</string>
+
+    <string name="monet_category_colors">Individual colours</string>
+    <string name="monet_colors_intro">The theme style builds five palettes from the seed colour. Pick a colour for any of them to replace that palette completely; the others keep following the style.</string>
+    <string name="monet_color_primary_title">Primary</string>
+    <string name="monet_color_primary_desc">The main accent: switches, sliders, the active Quick Settings tiles, buttons and highlights</string>
+    <string name="monet_color_secondary_title">Secondary</string>
+    <string name="monet_color_secondary_desc">Quieter accents: chips, tonal buttons, inactive tiles, selected list items and the notification shade</string>
+    <string name="monet_color_tertiary_title">Tertiary</string>
+    <string name="monet_color_tertiary_desc">The contrasting accent: badges, highlights and decorative details that should stand apart from the primary colour</string>
+    <string name="monet_color_neutral_title">Neutral</string>
+    <string name="monet_color_neutral_desc">Backgrounds and surfaces: app backgrounds, cards, dialogs, the lock screen and launcher surfaces</string>
+    <string name="monet_color_neutral_variant_title">Neutral variant</string>
+    <string name="monet_color_neutral_variant_desc">Outlines, dividers, secondary surfaces and the tint of secondary text and icons</string>
+    <string name="monet_color_automatic">Automatic</string>
+    <string name="monet_color_summary_automatic">Automatic (from the theme style). %1$s</string>
+    <string name="monet_color_summary_custom">%1$s. %2$s</string>
+
+    <string name="monet_category_tuning">Fine tuning</string>
+    <string name="monet_picker_hue">Hue</string>
+    <string name="monet_picker_saturation">Saturation</string>
+    <string name="monet_picker_brightness">Brightness</string>
 </resources>

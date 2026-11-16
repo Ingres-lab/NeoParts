@@ -3,46 +3,179 @@
      SPDX-FileCopyrightText: Neo
      SPDX-License-Identifier: Apache-2.0
 -->
+<!-- Neo > Display > Monet engine. Style and seed colour go to theme_customization_overlay_packages
+     (like the wallpaper picker); palette colours and tuning are neo_monet_* (NeoMonetTuning). -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:title="@string/monet_title">
 
-    <SeekBarPreference
-        android:key="monet_accent_chroma"
-        android:persistent="false"
-        android:title="@string/monet_accent_title"
-        android:summary="@string/monet_accent_summary"
-        android:min="0"
-        android:max="200"
-        app:seekBarIncrement="5"
-        app:showSeekBarValue="true"
-        app:updatesContinuously="false" />
+    <PreferenceCategory
+        android:key="monet_category_preview"
+        android:title="@string/monet_category_preview">
 
-    <SeekBarPreference
-        android:key="monet_neutral_chroma"
-        android:persistent="false"
-        android:title="@string/monet_neutral_title"
-        android:summary="@string/monet_neutral_summary"
-        android:min="0"
-        android:max="300"
-        app:seekBarIncrement="10"
-        app:showSeekBarValue="true"
-        app:updatesContinuously="false" />
+        <Preference
+            android:key="monet_preview"
+            android:layout="@layout/neo_monet_preview"
+            android:selectable="false" />
 
-    <SeekBarPreference
-        android:key="monet_hue_shift"
-        android:persistent="false"
-        android:title="@string/monet_hue_title"
-        android:summary="@string/monet_hue_summary"
-        android:min="-180"
-        android:max="180"
-        app:seekBarIncrement="5"
-        app:showSeekBarValue="true"
-        app:updatesContinuously="false" />
+    </PreferenceCategory>
 
-    <Preference
-        android:key="monet_reset"
-        android:persistent="false"
-        android:title="@string/monet_reset_title" />
+    <PreferenceCategory
+        android:key="monet_category_style"
+        android:title="@string/monet_category_style">
+
+        <com.android.settingslib.widget.SelectorWithWidgetPreference
+            android:key="style_TONAL_SPOT"
+            android:persistent="false"
+            android:title="@string/monet_style_tonal_spot_title"
+            android:summary="@string/monet_style_tonal_spot_summary" />
+
+        <com.android.settingslib.widget.SelectorWithWidgetPreference
+            android:key="style_SPRITZ"
+            android:persistent="false"
+            android:title="@string/monet_style_spritz_title"
+            android:summary="@string/monet_style_spritz_summary" />
+
+        <com.android.settingslib.widget.SelectorWithWidgetPreference
+            android:key="style_VIBRANT"
+            android:persistent="false"
+            android:title="@string/monet_style_vibrant_title"
+            android:summary="@string/monet_style_vibrant_summary" />
+
+        <com.android.settingslib.widget.SelectorWithWidgetPreference
+            android:key="style_EXPRESSIVE"
+            android:persistent="false"
+            android:title="@string/monet_style_expressive_title"
+            android:summary="@string/monet_style_expressive_summary" />
+
+        <com.android.settingslib.widget.SelectorWithWidgetPreference
+            android:key="style_RAINBOW"
+            android:persistent="false"
+            android:title="@string/monet_style_rainbow_title"
+            android:summary="@string/monet_style_rainbow_summary" />
+
+        <com.android.settingslib.widget.SelectorWithWidgetPreference
+            android:key="style_FRUIT_SALAD"
+            android:persistent="false"
+            android:title="@string/monet_style_fruit_salad_title"
+            android:summary="@string/monet_style_fruit_salad_summary" />
+
+        <com.android.settingslib.widget.SelectorWithWidgetPreference
+            android:key="style_CONTENT"
+            android:persistent="false"
+            android:title="@string/monet_style_content_title"
+            android:summary="@string/monet_style_content_summary" />
+
+        <com.android.settingslib.widget.SelectorWithWidgetPreference
+            android:key="style_MONOCHROMATIC"
+            android:persistent="false"
+            android:title="@string/monet_style_monochromatic_title"
+            android:summary="@string/monet_style_monochromatic_summary" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="monet_category_source"
+        android:title="@string/monet_category_source">
+
+        <com.android.settingslib.widget.SelectorWithWidgetPreference
+            android:key="source_wallpaper"
+            android:persistent="false"
+            android:title="@string/monet_source_wallpaper_title"
+            android:summary="@string/monet_source_wallpaper_summary" />
+
+        <com.android.settingslib.widget.SelectorWithWidgetPreference
+            android:key="source_custom"
+            android:persistent="false"
+            android:title="@string/monet_source_custom_title"
+            android:summary="@string/monet_source_custom_summary" />
+
+        <org.neo.parts.ColorPreference
+            android:key="seed_color"
+            android:persistent="false"
+            android:title="@string/monet_seed_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="monet_category_colors"
+        android:title="@string/monet_category_colors">
+
+        <Preference
+            android:key="monet_colors_intro"
+            android:selectable="false"
+            android:summary="@string/monet_colors_intro" />
+
+        <org.neo.parts.ColorPreference
+            android:key="color_primary"
+            android:persistent="false"
+            android:title="@string/monet_color_primary_title" />
+
+        <org.neo.parts.ColorPreference
+            android:key="color_secondary"
+            android:persistent="false"
+            android:title="@string/monet_color_secondary_title" />
+
+        <org.neo.parts.ColorPreference
+            android:key="color_tertiary"
+            android:persistent="false"
+            android:title="@string/monet_color_tertiary_title" />
+
+        <org.neo.parts.ColorPreference
+            android:key="color_neutral"
+            android:persistent="false"
+            android:title="@string/monet_color_neutral_title" />
+
+        <org.neo.parts.ColorPreference
+            android:key="color_neutral_variant"
+            android:persistent="false"
+            android:title="@string/monet_color_neutral_variant_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="monet_category_tuning"
+        android:title="@string/monet_category_tuning">
+
+        <SeekBarPreference
+            android:key="monet_accent_chroma"
+            android:persistent="false"
+            android:title="@string/monet_accent_title"
+            android:summary="@string/monet_accent_summary"
+            android:min="0"
+            android:max="200"
+            app:seekBarIncrement="5"
+            app:showSeekBarValue="true"
+            app:updatesContinuously="false" />
+
+        <SeekBarPreference
+            android:key="monet_neutral_chroma"
+            android:persistent="false"
+            android:title="@string/monet_neutral_title"
+            android:summary="@string/monet_neutral_summary"
+            android:min="0"
+            android:max="300"
+            app:seekBarIncrement="10"
+            app:showSeekBarValue="true"
+            app:updatesContinuously="false" />
+
+        <SeekBarPreference
+            android:key="monet_hue_shift"
+            android:persistent="false"
+            android:title="@string/monet_hue_title"
+            android:summary="@string/monet_hue_summary"
+            android:min="-180"
+            android:max="180"
+            app:seekBarIncrement="5"
+            app:showSeekBarValue="true"
+            app:updatesContinuously="false" />
+
+        <Preference
+            android:key="monet_reset"
+            android:persistent="false"
+            android:title="@string/monet_reset_title"
+            android:summary="@string/monet_reset_summary" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

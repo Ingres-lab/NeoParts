@@ -34,6 +34,7 @@ public class NeoApplication extends Application {
         ThreeFingerScreenshot.init(this);
         GameModeController.init(this);
         LauncherHaptics.init(this);
+        AtAGlanceFlags.init(this);
     }
 
     private void register() {

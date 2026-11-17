@@ -23,6 +23,9 @@
     <uses-permission android:name="android.permission.DUMP" />
     <!-- Haptics page: plays the feel-test effects -->
     <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- LauncherHaptics: launcher/ENABLE_SEARCH_HAPTIC_HINT -->
+    <uses-permission android:name="android.permission.READ_DEVICE_CONFIG" />
+    <uses-permission android:name="android.permission.WRITE_DEVICE_CONFIG" />
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
 
     <!-- Shoulder trigger overlay: floating button and editor over games (signature
